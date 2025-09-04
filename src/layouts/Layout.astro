@@ -25,15 +25,44 @@ const { title, description = "Maingoo - Gestión inteligente de restaurantes con
     <!-- Dark mode script to prevent FOUC -->
     <script is:inline>
       // Check for saved theme preference or default to system preference
-      const savedTheme = localStorage.getItem('darkMode');
-      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      if (savedTheme === 'true' || (savedTheme === null && systemPreference)) {
-        document.documentElement.classList.add('dark');
-      }
+      (function() {
+        console.log('=== FOUC Prevention Script ===');
+        
+        const savedTheme = localStorage.getItem('darkMode');
+        const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        console.log('FOUC - Saved theme:', savedTheme);
+        console.log('FOUC - System preference (dark):', systemPreference);
+        console.log('FOUC - System preference (light):', window.matchMedia('(prefers-color-scheme: light)').matches);
+        
+        let shouldBeDark = false;
+        
+        if (savedTheme !== null) {
+          // User has a saved preference
+          shouldBeDark = savedTheme === 'true';
+          console.log('FOUC - Using saved preference:', shouldBeDark);
+        } else {
+          // No saved preference, follow system
+          shouldBeDark = systemPreference;
+          console.log('FOUC - Using system preference:', shouldBeDark);
+        }
+        
+        console.log('FOUC - Final decision:', shouldBeDark);
+        
+        if (shouldBeDark) {
+          document.documentElement.classList.add('dark');
+          console.log('FOUC - Added dark class');
+        } else {
+          document.documentElement.classList.remove('dark');
+          console.log('FOUC - Removed dark class (if it existed)');
+        }
+        
+        console.log('FOUC - Final HTML classes:', document.documentElement.className);
+        console.log('===============================');
+      })();
     </script>
   </head>
-  <body class="font-inter antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+  <body class="font-inter antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 dark-mode-transition">
     <slot />
     
     <style>
