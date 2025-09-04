@@ -21,8 +21,19 @@ const { title, description = "Maingoo - Gestión inteligente de restaurantes con
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Dark mode script to prevent FOUC -->
+    <script is:inline>
+      // Check for saved theme preference or default to system preference
+      const savedTheme = localStorage.getItem('darkMode');
+      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'true' || (savedTheme === null && systemPreference)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
   </head>
-  <body class="font-inter antialiased">
+  <body class="font-inter antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <slot />
     
     <style>

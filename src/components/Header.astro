@@ -1,7 +1,7 @@
 ---
 ---
 
-<header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+<header class="fixed top-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -11,20 +11,36 @@
           alt="Maingoo Logo" 
           class="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain"
         />
-        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800">Maingoo</span>
+        <span class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 dark:text-white">Maingoo</span>
       </div>
       
       <!-- Navigation Links -->
       <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-        <a href="#features" class="text-gray-600 hover:text-blue-600 transition-colors text-sm xl:text-base whitespace-nowrap">Características</a>
-        <a href="#benefits" class="text-gray-600 hover:text-blue-600 transition-colors text-sm xl:text-base whitespace-nowrap">Beneficios</a>
-        <a href="#pricing" class="text-gray-600 hover:text-blue-600 transition-colors text-sm xl:text-base whitespace-nowrap">Precios</a>
-        <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors text-sm xl:text-base whitespace-nowrap">Contacto</a>
+        <a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm xl:text-base whitespace-nowrap">Características</a>
+        <a href="#benefits" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm xl:text-base whitespace-nowrap">Beneficios</a>
+        <a href="#pricing" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm xl:text-base whitespace-nowrap">Precios</a>
+        <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm xl:text-base whitespace-nowrap">Contacto</a>
       </div>
       
-      <!-- CTA Button -->
+      <!-- Dark Mode Toggle & CTA Buttons -->
       <div class="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-        <button class="hidden lg:block text-gray-600 hover:text-blue-600 transition-colors text-sm xl:text-base font-medium">
+        <!-- Dark Mode Toggle Button -->
+        <button 
+          id="dark-mode-toggle" 
+          class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
+          aria-label="Cambiar modo oscuro"
+        >
+          <!-- Sun Icon (for dark mode) -->
+          <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+          </svg>
+          <!-- Moon Icon (for light mode) -->
+          <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+        
+        <button class="hidden lg:block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm xl:text-base font-medium">
           Iniciar Sesión
         </button>
         <button class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 text-xs sm:text-sm lg:text-base font-semibold whitespace-nowrap shadow-md">
@@ -33,7 +49,7 @@
       </div>
       
       <!-- Mobile Menu Button -->
-      <button class="lg:hidden p-2" id="mobile-menu-button">
+      <button class="lg:hidden p-2 text-gray-600 dark:text-gray-300" id="mobile-menu-button">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
@@ -41,14 +57,14 @@
     </div>
     
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden hidden bg-white/95 backdrop-blur-md border-t border-gray-100">
+    <div id="mobile-menu" class="lg:hidden hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-100 dark:border-gray-800">
       <div class="px-4 py-4 space-y-4">
-        <a href="#features" class="block text-gray-600 hover:text-blue-600 transition-colors py-2">Características</a>
-        <a href="#benefits" class="block text-gray-600 hover:text-blue-600 transition-colors py-2">Beneficios</a>
-        <a href="#pricing" class="block text-gray-600 hover:text-blue-600 transition-colors py-2">Precios</a>
-        <a href="#contact" class="block text-gray-600 hover:text-blue-600 transition-colors py-2">Contacto</a>
-        <div class="pt-4 border-t border-gray-200">
-          <button class="block w-full text-left text-gray-600 hover:text-blue-600 transition-colors py-2 font-medium">
+        <a href="#features" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2">Características</a>
+        <a href="#benefits" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2">Beneficios</a>
+        <a href="#pricing" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2">Precios</a>
+        <a href="#contact" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2">Contacto</a>
+        <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+          <button class="block w-full text-left text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 font-medium">
             Iniciar Sesión
           </button>
         </div>
@@ -59,6 +75,63 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Dark Mode Toggle Functionality
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    
+    // Function to update dark mode
+    function updateDarkMode(isDark: boolean) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkMode', 'false');
+      }
+    }
+    
+    // Function to check system preference
+    function getSystemDarkMode() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    
+    // Initialize dark mode based on localStorage or system preference
+    function initializeDarkMode() {
+      const savedMode = localStorage.getItem('darkMode');
+      let isDark = false;
+      
+      if (savedMode !== null) {
+        // Use saved preference
+        isDark = savedMode === 'true';
+      } else {
+        // Use system preference
+        isDark = getSystemDarkMode();
+      }
+      
+      updateDarkMode(isDark);
+    }
+    
+    // Initialize dark mode on page load
+    initializeDarkMode();
+    
+    // Dark mode toggle event listener
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        updateDarkMode(!isDark);
+      });
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      // Only update if user hasn't set a preference
+      if (localStorage.getItem('darkMode') === null) {
+        updateDarkMode(e.matches);
+      }
+    });
+
+    // Mobile Menu Functionality
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
