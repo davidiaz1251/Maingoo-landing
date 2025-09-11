@@ -2,7 +2,7 @@ name: Deploy Sergio branch to GitHub Pages
 
 on:
   push:
-    branches: [sergio]   # cambia si tu rama se llama distinto
+    branches: [sergio]
   workflow_dispatch:
 
 permissions:
@@ -26,7 +26,13 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build   # Astro genera ./dist
+
+      
+      - name: Build Astro with GH Pages base
+        run: |
+          npx astro build \
+            --site "https://davidiaz1251.github.io/Maingoo-landing/" \
+            --base "/Maingoo-landing/"
 
       - uses: actions/upload-pages-artifact@v3
         with:
