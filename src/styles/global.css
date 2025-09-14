@@ -7,9 +7,15 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and section offset */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Add padding to sections */
+section[id] {
+  scroll-margin-top: 6rem;
 }
 
 /* Custom gradient backgrounds */
