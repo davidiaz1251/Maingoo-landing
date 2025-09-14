@@ -10,12 +10,26 @@
 /* Smooth scrolling and section offset */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
 }
 
-/* Add padding to sections */
+/* Fixed header compensation for anchor links */
 section[id] {
-  scroll-margin-top: 6rem;
+  padding-top: 80px;
+  margin-top: -80px;
+}
+
+@media (min-width: 640px) {
+  section[id] {
+    padding-top: 96px;
+    margin-top: -96px;
+  }
+}
+
+@media (min-width: 1024px) {
+  section[id] {
+    padding-top: 112px;
+    margin-top: -112px;
+  }
 }
 
 /* Custom gradient backgrounds */
