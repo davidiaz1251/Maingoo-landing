@@ -13,7 +13,7 @@ const { title, description = "Maingoo - Gestión inteligente de restaurantes con
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/maingoo_favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     
@@ -21,8 +21,48 @@ const { title, description = "Maingoo - Gestión inteligente de restaurantes con
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Dark mode script to prevent FOUC -->
+    <script is:inline>
+      // Check for saved theme preference or default to system preference
+      (function() {
+        console.log('=== FOUC Prevention Script ===');
+        
+        const savedTheme = localStorage.getItem('darkMode');
+        const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        console.log('FOUC - Saved theme:', savedTheme);
+        console.log('FOUC - System preference (dark):', systemPreference);
+        console.log('FOUC - System preference (light):', window.matchMedia('(prefers-color-scheme: light)').matches);
+        
+        let shouldBeDark = false;
+        
+        if (savedTheme !== null) {
+          // User has a saved preference
+          shouldBeDark = savedTheme === 'true';
+          console.log('FOUC - Using saved preference:', shouldBeDark);
+        } else {
+          // No saved preference, follow system
+          shouldBeDark = systemPreference;
+          console.log('FOUC - Using system preference:', shouldBeDark);
+        }
+        
+        console.log('FOUC - Final decision:', shouldBeDark);
+        
+        if (shouldBeDark) {
+          document.documentElement.classList.add('dark');
+          console.log('FOUC - Added dark class');
+        } else {
+          document.documentElement.classList.remove('dark');
+          console.log('FOUC - Removed dark class (if it existed)');
+        }
+        
+        console.log('FOUC - Final HTML classes:', document.documentElement.className);
+        console.log('===============================');
+      })();
+    </script>
   </head>
-  <body class="font-inter antialiased">
+  <body class="font-inter antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 dark-mode-transition">
     <slot />
     
     <style>
