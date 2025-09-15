@@ -14,34 +14,32 @@
           align-items: center;
           justify-content: center;
           width: 100%;
+          padding: 0 1rem;
         }
         @media (max-width: 768px) {
-          .headline-row:first-child {
-            flex-direction: column;
-            margin-bottom: 0.1em;
-          }
-          .headline-row:last-child {
+          .headline-row {
             flex-direction: row;
             flex-wrap: nowrap;
-            gap: 0.3em;
+            margin-bottom: 0.5em;
+          }
+          .headline-row:last-child {
+            margin-bottom: 0;
           }
         }
+        .first-row {
+          display: flex;
+          gap: 0.5em;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: nowrap;
+        }
         .fixed-text {
-          text-align: center;
           white-space: nowrap;
         }
         .changing-container {
-          width: 100%;
-          max-width: 300px;
-          text-align: center;
           position: relative;
           height: 1.2em;
-        }
-        @media (min-width: 769px) {
-          .changing-container {
-            text-align: left;
-            margin-left: 1rem;
-          }
+          white-space: nowrap;
         }
         .changing-business {
           position: relative;
@@ -55,21 +53,19 @@
           color: white;
           font-weight: bold;
           position: absolute;
-          left: 50%;
-          top: 0;
-          transform: translateX(-50%);
           white-space: nowrap;
         }
-        @media (min-width: 769px) {
+        @media (max-width: 768px) {
           .changing-business::after {
-            left: 0;
-            transform: none;
+            position: relative;
+            display: inline-block;
           }
         }
         .ai-text {
-          display: inline-flex;
+          display: flex;
           flex-direction: row;
           align-items: center;
+          justify-content: center;
           gap: 0.3em;
           white-space: nowrap;
         }
@@ -95,14 +91,14 @@
         }
       </style>
       <h1
-        class="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-8"
+        class="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-8"
       >
         <div class="headline-row">
-          <div class="fixed-text">
+          <div class="first-row">
             <span class="text-gray-800 dark:text-white">Gestiona tu</span>
-          </div>
-          <div class="changing-container">
-            <span class="changing-business dark:text-white"></span>
+            <div class="changing-container">
+              <span class="changing-business dark:text-white"></span>
+            </div>
           </div>
         </div>
         <div class="headline-row">
