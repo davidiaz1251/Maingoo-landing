@@ -11,17 +11,20 @@
       <style>
         .headline-row {
           display: flex;
-          align-items: center;
+          align-items: baseline;
           justify-content: center;
           width: 100%;
-          margin-bottom: 0.05em;
-          flex-wrap: wrap;
+          margin-bottom: 0.25em;
         }
         @media (max-width: 768px) {
           .headline-row {
+            margin-bottom: 0.1em;
+            min-height: 1.2em;
+            align-items: center;
+          }
+          .headline-row:first-child {
             flex-direction: column;
-            text-align: center;
-            gap: 0.5rem;
+            margin-bottom: 0.5em;
           }
         }
         .headline-row:last-child {
@@ -34,14 +37,15 @@
         @media (max-width: 768px) {
           .fixed-text {
             text-align: center;
+            margin-bottom: -0.2em;
           }
         }
         .changing-container {
           width: min(300px, 100%);
           text-align: left;
           margin-left: 1rem;
-          min-height: 1.2em;
           position: relative;
+          line-height: 1.2;
         }
         @media (max-width: 768px) {
           .changing-container {
@@ -55,11 +59,11 @@
           display: block;
           width: 100%;
           text-align: left;
-          height: 1.2em;
         }
         @media (max-width: 768px) {
           .changing-business {
             text-align: center;
+            height: 1.2em;
           }
         }
         .changing-business::after {
@@ -69,9 +73,8 @@
           font-weight: bold;
           position: absolute;
           left: 50%;
-          top: 0.1em;
-          white-space: nowrap;
           transform: translateX(-50%);
+          white-space: nowrap;
         }
         @media (min-width: 769px) {
           .changing-business::after {
@@ -101,7 +104,7 @@
         }
       </style>
       <h1
-        class="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-12 leading-tight flex flex-col gap-4 md:gap-2"
+        class="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-8 leading-tight"
       >
         <div class="headline-row">
           <div class="fixed-text">
@@ -113,7 +116,7 @@
         </div>
         <div class="headline-row">
           <span class="text-gray-800 dark:text-white">con</span>
-          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ml-2 py-3">
+          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ml-2">
             Inteligencia Artificial
           </span>
         </div>
