@@ -1,8 +1,10 @@
-name: Deploy Sergio branch to GitHub Pages
+name: Deploy to GitHub Pages (sergio + PR previews)
 
 on:
   push:
-    branches: [sergio]
+    branches: [main, sergio, Sergio]   
+  pull_request:
+    branches: [main]                   
   workflow_dispatch:
 
 permissions:
@@ -11,7 +13,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -19,24 +21,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - run: npm ci
-
-      
       - name: Build Astro with GH Pages base
         run: |
           npx astro build \
             --site "https://davidiaz1251.github.io/Maingoo-landing/" \
             --base "/Maingoo-landing/"
-
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: dist
 
   deploy:
     needs: build
@@ -47,3 +44,5 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          preview: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}

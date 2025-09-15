@@ -7,9 +7,29 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and section offset */
 html {
   scroll-behavior: smooth;
+}
+
+/* Fixed header compensation for anchor links */
+section[id] {
+  padding-top: 80px;
+  margin-top: -80px;
+}
+
+@media (min-width: 640px) {
+  section[id] {
+    padding-top: 96px;
+    margin-top: -96px;
+  }
+}
+
+@media (min-width: 1024px) {
+  section[id] {
+    padding-top: 112px;
+    margin-top: -112px;
+  }
 }
 
 /* Custom gradient backgrounds */

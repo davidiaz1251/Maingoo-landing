@@ -14,12 +14,16 @@ import Footer from '../components/Footer.astro';
   description="Revoluciona tu restaurante con Maingoo. Gestión inteligente, volcado automático de datos con IA, análisis predictivo y optimización de operaciones. Prueba gratuita de 14 días."
 >
   <Header />
-  <main>
-    <Hero />
-    <Features />
-    <Benefits />
-    <Pricing />
-    <ContactCTA />
+  <main class="relative">
+    <div class="mt-[72px] lg:mt-[88px]">
+      <Hero />
+    </div>
+    <div class="relative">
+      <Features />
+      <Benefits />
+      <Pricing />
+      <ContactCTA />
+    </div>
   </main>
   <Footer />
 </Layout>
