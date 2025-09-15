@@ -15,6 +15,14 @@
           justify-content: center;
           width: 100%;
           margin-bottom: 0.05em;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 768px) {
+          .headline-row {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+          }
         }
         .headline-row:last-child {
           margin-bottom: 0;
@@ -23,12 +31,24 @@
           text-align: right;
           white-space: nowrap;
         }
+        @media (max-width: 768px) {
+          .fixed-text {
+            text-align: center;
+          }
+        }
         .changing-container {
-          width: 300px;
+          width: min(300px, 100%);
           text-align: left;
           margin-left: 1rem;
           min-height: 1.2em;
           position: relative;
+        }
+        @media (max-width: 768px) {
+          .changing-container {
+            margin-left: 0;
+            text-align: center;
+            width: 100%;
+          }
         }
         .changing-business {
           position: relative;
@@ -37,15 +57,27 @@
           text-align: left;
           height: 1.2em;
         }
+        @media (max-width: 768px) {
+          .changing-business {
+            text-align: center;
+          }
+        }
         .changing-business::after {
           content: "Restaurante";
           animation: changeWord 34s infinite;
           color: white;
           font-weight: bold;
           position: absolute;
-          left: 0;
+          left: 50%;
           top: 0.1em;
           white-space: nowrap;
+          transform: translateX(-50%);
+        }
+        @media (min-width: 769px) {
+          .changing-business::after {
+            left: 0;
+            transform: none;
+          }
         }
 
         @keyframes changeWord {
@@ -69,7 +101,7 @@
         }
       </style>
       <h1
-        class="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-12 leading-tight"
+        class="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-12 leading-tight flex flex-col gap-4 md:gap-2"
       >
         <div class="headline-row">
           <div class="fixed-text">
