@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Política de Cookies - Maingoo" description="Información sobre el uso de cookies en Maingoo y cómo gestionarlas">
+  <main class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Header spacing -->
+    <div class="pt-20 lg:pt-24">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Política de Cookies
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300">
+            Última actualización: Septiembre 2024
+          </p>
+        </div>
+
+        <div class="prose prose-lg max-w-none dark:prose-invert">
+          <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">¿Qué son las cookies?</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Nos ayudan a mejorar tu experiencia, recordar tus preferencias y analizar cómo utilizas nuestros servicios.
+            </p>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Tipos de cookies que utilizamos</h2>
+            
+            <div class="space-y-6">
+              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Cookies esenciales</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-3">
+                  Estas cookies son necesarias para el funcionamiento básico del sitio web y no se pueden desactivar.
+                </p>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                  <li>Autenticación de usuarios</li>
+                  <li>Seguridad del sitio web</li>
+                  <li>Funcionalidades básicas</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Cookies de rendimiento</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-3">
+                  Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web.
+                </p>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                  <li>Google Analytics</li>
+                  <li>Métricas de uso</li>
+                  <li>Análisis de comportamiento</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Cookies de funcionalidad</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-3">
+                  Permiten que el sitio web recuerde las opciones que has elegido.
+                </p>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                  <li>Preferencias de idioma</li>
+                  <li>Tema oscuro/claro</li>
+                  <li>Configuraciones personalizadas</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Cookies de marketing</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-3">
+                  Se utilizan para hacer un seguimiento de los visitantes en los sitios web.
+                </p>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                  <li>Publicidad personalizada</li>
+                  <li>Remarketing</li>
+                  <li>Análisis de conversiones</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Cookies de terceros</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Algunos de nuestros socios también pueden establecer cookies cuando visitas nuestro sitio web:
+            </p>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+              <li><strong>Google Analytics:</strong> Para análisis web y medición de audiencia</li>
+              <li><strong>Cookie Script:</strong> Para gestión del consentimiento de cookies</li>
+              <li><strong>Redes sociales:</strong> Si compartes contenido en plataformas sociales</li>
+            </ul>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Gestionar tus cookies</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Puedes controlar y/o eliminar las cookies según desees. Tienes varias opciones:
+            </p>
+            
+            <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mb-6">
+              <h3 class="text-lg font-semibold text-blue-900 dark:text-blue-300 mb-3">
+                🍪 Panel de preferencias de cookies
+              </h3>
+              <p class="text-blue-800 dark:text-blue-200 mb-4">
+                Puedes gestionar tus preferencias de cookies en cualquier momento usando nuestro panel de configuración.
+              </p>
+              <button 
+                onclick="CookieScript.instance.show()" 
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200"
+              >
+                Configurar Cookies
+              </button>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Configuración del navegador</h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                  También puedes configurar tu navegador para rechazar todas las cookies o para indicarte cuándo se está enviando una cookie.
+                </p>
+              </div>
+
+              <div>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Enlaces útiles</h4>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                  <li><a href="https://support.google.com/chrome/answer/95647" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">Chrome</a></li>
+                  <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-preferencias" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">Firefox</a></li>
+                  <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">Safari</a></li>
+                  <li><a href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">Internet Explorer</a></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Duración de las cookies</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Las cookies pueden ser:
+            </p>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+              <li><strong>De sesión:</strong> Se eliminan cuando cierras el navegador</li>
+              <li><strong>Persistentes:</strong> Permanecen hasta una fecha de expiración específica</li>
+              <li><strong>Personalizadas:</strong> Pueden tener diferentes duraciones según su propósito</li>
+            </ul>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Contacto</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Si tienes preguntas sobre nuestra política de cookies, puedes contactarnos:
+            </p>
+            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+              <p class="text-gray-600 dark:text-gray-300">
+                Email: cookies@maingoo.com<br>
+                Dirección: [Tu dirección]<br>
+                Teléfono: [Tu teléfono]
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Script para verificar CookieScript -->
+  <script is:inline>
+    // Script para mostrar el panel de cookies si CookieScript está disponible
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificar si CookieScript está cargado
+      if (typeof CookieScript !== 'undefined') {
+        console.log('CookieScript está disponible');
+      } else {
+        console.log('CookieScript no está disponible aún');
+        // Opcional: ocultar el botón si CookieScript no está disponible
+      }
+    });
+  </script>
+</Layout>
