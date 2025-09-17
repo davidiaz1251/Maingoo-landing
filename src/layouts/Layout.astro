@@ -17,36 +17,22 @@ const { title, description = "Maingoo - Gestión inteligente de restaurantes con
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
-    <!-- Google Tag Manager -->
-    <script type="text/javascript" define:vars={{ GTM_ID: 'GTM-KGHTW4FB' }}>
-    {
-      const initGTM = () => {
-        // Declare dataLayer
-        window.dataLayer = window.dataLayer || [];
-        
-        // Create script element
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-        
-        // Find first script tag
-        const firstScript = document.getElementsByTagName('script')[0];
-        if (firstScript?.parentNode) {
-          firstScript.parentNode.insertBefore(script, firstScript);
-        }
-        
-        // Push initial event
-        window.dataLayer.push({
-          'gtm.start': new Date().getTime(),
-          event: 'gtm.js'
-        });
-      };
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H6FCBZSDLH"></script>
+    <script is:inline define:vars={{ GA_ID: 'G-H6FCBZSDLH' }}>
+      // Extend Window interface to include dataLayer
+      window.dataLayer = window.dataLayer || [];
       
-      // Initialize GTM
-      initGTM();
-    }
+      // Define gtag function
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+
+      // Initialize gtag
+      gtag.call(window, 'js', new Date());
+      gtag.call(window, 'config', GA_ID);
     </script>
-    <!-- End Google Tag Manager -->
+    <!-- End Google Analytics -->
 
     <!-- Microsoft Clarity Analytics -->
     <script type="text/javascript">
@@ -103,10 +89,6 @@ const { title, description = "Maingoo - Gestión inteligente de restaurantes con
     </script>
   </head>
   <body class="font-inter antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 dark-mode-transition">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGHTW4FB"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <slot />
     
     <style>
