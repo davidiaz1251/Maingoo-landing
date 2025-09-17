@@ -2,174 +2,207 @@
 
 ---
 
-<!-- =========================
-     HERO / SECCIÓN PRINCIPAL
-     - Fondo con degradado y soporte dark mode
-     - Gran bloque con titular, subtítulo, CTA y estadísticas
-     ========================= -->
-
-<section class="relative pt-16 pb-40 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-
-  <!-- Contenedor central con márgenes horizontales -->
+<section
+  class="pt-32 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+>
   <div class="container mx-auto px-6">
-
-    <!-- Wrapper que limita el ancho y centra el contenido del hero -->
     <div class="max-w-4xl mx-auto text-center">
+      <!-- Hero Headline -->
+      <style>
+        /* Estilos compartidos */
+        .headline-row {
+          width: 100%;
+        }
 
-      <!-- ===== Titular principal (Hero Headline) ===== -->
+        .changing-business::after {
+          content: "Restaurante";
+          animation: changeWord 34s infinite;
+          font-weight: bold;
+          white-space: nowrap;
+        }
+
+        /* Estilos para Desktop */
+        @media (min-width: 769px) {
+          .headline-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.25em;
+          }
+          .headline-row:last-child {
+            margin-bottom: 0;
+          }
+          .fixed-text {
+            text-align: right;
+            white-space: nowrap;
+          }
+          .changing-container {
+            width: auto;
+            min-width: 300px;
+            text-align: left;
+            margin-left: 1rem;
+            position: relative;
+          }
+          .changing-business {
+            position: relative;
+            display: block;
+            height: 1em;
+          }
+          .changing-business::after {
+            color: white;
+            position: absolute;
+            left: 0;
+          }
+          .ai-text {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+          }
+        }
+
+        /* Estilos para Móvil */
+        @media (max-width: 768px) {
+          .headline-row {
+            padding: 0 1rem;
+            margin-bottom: 0.5em;
+            display: block;
+            text-align: center;
+          }
+          .headline-row:last-child {
+            margin-bottom: 0;
+          }
+          .first-row {
+            display: block;
+            margin-bottom: 0.3em;
+          }
+          .changing-container {
+            display: block;
+            margin-top: 0.2em;
+            min-height: 1.2em;
+          }
+          .changing-business {
+            display: block;
+            height: 1.2em;
+          }
+          .changing-business::after {
+            color: white;
+            position: relative;
+            display: inline-block;
+          }
+          .ai-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            justify-content: center;
+          }
+        }
+
+        @keyframes changeWord {
+          0%, 5.88% { content: "Buffet"; }
+          5.89%, 11.76% { content: "Cocktelería"; }
+          11.77%, 17.64% { content: "Cafetería"; }
+          17.65%, 23.52% { content: "Restaurante"; }
+          23.53%, 29.41% { content: "Catering"; }
+          29.42%, 35.29% { content: "Cervecería"; }
+          35.30%, 41.17% { content: "Foodtruck"; }
+          41.18%, 47.05% { content: "Chiringuito"; }
+          47.06%, 52.94% { content: "Cocktelería"; }
+          52.95%, 58.82% { content: "Churrería"; }
+          58.83%, 64.70% { content: "Restaurante"; }
+          64.71%, 70.58% { content: "Heladería"; }
+          70.59%, 76.47% { content: "Foodtruck"; }
+          76.48%, 82.35% { content: "Panadería"; }
+          82.36%, 88.23% { content: "Pastelería"; }
+          88.24%, 94.11% { content: "Pizzería"; }
+          94.12%, 100% { content: "Sidrería"; }
+        }
+      </style>
       <h1
-        class="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight">
-        Gestiona tu negocio de hostelería con
-        <!-- Span con texto degradado (efecto de “texto con gradiente”) -->
-        <span
-          class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Inteligencia Artificial
-        </span>
+        class="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-8"
+      >
+        <div class="headline-row">
+          <div class="first-row">
+            <span class="text-gray-800 dark:text-white">Gestiona tu</span>
+          </div>
+          <div class="changing-container">
+            <span class="changing-business dark:text-white"></span>
+          </div>
+        </div>
+        <div class="headline-row">
+          <div class="ai-text">
+            <span class="text-gray-800 dark:text-white">con</span>
+            <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Inteligencia Artificial
+            </span>
+          </div>
+        </div>
       </h1>
 
-      <!-- ===== Subtítulo del hero con copy de valor ===== -->
+      <!-- Hero Subtitle -->
       <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-        Maingoo (r)evoluciona la gestión con volcado automático de
-        datos y análisis inteligente para optimizar tu negocio.
+        Maingoo (r)evoluciona la gestión con automatización inteligente de facturas, 
+        inventario y análisis de datos para optimizar tu negocio.
       </p>
 
-      <!-- ===== Botón de llamada a la acción (CTA) =====
-           - Disposición responsive (columna en móvil, fila en escritorio)
-           - Botón con gradiente, hover y leve “lift” -->
+      <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
         <a href="#contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all transform hover:-translate-y-1 inline-block text-center">
           Solicitar Acceso a la Beta
         </a>
       </div>
 
-      <!-- ===== Bloque de estadísticas/beneficios (icono + texto) =====
-           - Grid responsive: 1 columna en móvil, 3 en pantallas pequeñas
-           - Cada item: icono en color + etiqueta descriptiva -->
+      <!-- Hero Stats -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
-
-        <!-- Item 1: Ahorro de tiempo -->
-        <div class="text-center">
-          <!-- Icono con color y tamaño -->
-          <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2 flex justify-center">
-            <!-- SVG de reloj/tiempo -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </div>
-          <!-- Texto descriptivo -->
-          <div class="text-gray-600 dark:text-gray-400">Ahorra horas cada semana</div>
-        </div>
-
-        <!-- Item 2: Volcado de facturas con IA -->
-        <div class="text-center">
-          <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2 flex justify-center">
-            <!-- SVG de documento/lista -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-            </svg>
-          </div>
-          <div class="text-gray-600 dark:text-gray-400">Volcado de facturas a traves de IA</div>
-        </div>
-
-        <!-- Item 3: Inventario en tiempo real -->
-        <div class="text-center">
-          <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2 flex justify-center">
-            <!-- SVG de estructura/almacenamiento -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-            </svg>
-          </div>
-          <div class="text-gray-600 dark:text-gray-400">Inventario en tiempo real</div>
-        </div>
-
-        <!-- Item 4: Seguridad de datos -->
-        <div class="text-center">
-          <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex justify-center">
-            <!-- SVG de caja fuerte/seguridad -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-            </svg>
-          </div>
-          <div class="text-gray-600 dark:text-gray-400">Datos seguros en la nube</div>
-        </div>
-
-        <!-- Item 5: Escalabilidad y modularidad -->
-        <div class="text-center">
-          <div class="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2 flex justify-center">
-            <!-- SVG de rayo/velocidad -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-          </div>
-          <div class="text-gray-600 dark:text-gray-400">Escalable y modular</div>
-        </div>
-
-        <!-- Item 6: Diseñado con gerentes reales -->
-        <div class="text-center">
-          <div class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2 flex justify-center">
-            <!-- SVG de comunidad/equipo -->
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0zM7 10a2 2 0 11-4 0 2 2 0z"></path>
-            </svg>
-          </div>
-          <div class="text-gray-600 dark:text-gray-400">Diseñado con gerentes reales</div>
-        </div>
-      </div>
-      <!-- ===== Fin del grid de estadísticas ===== -->
-
-      <!-- ===== Placeholder de imagen/video del producto =====
-           - Tarjeta con doble fondo degradado + tarjeta blanca interior
-           - Dentro, un área con proporción de video (16:9) y branding -->
-      <div class="mt-16 max-w-5xl mx-auto">
-        <!-- Marco exterior con degradado y sombra -->
-        <div
-          class="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-8 shadow-2xl"
-        >
-          <!-- Tarjeta interior blanca con sombra -->
-          <div class="bg-white rounded-xl p-6 shadow-lg">
-            <!-- Área con relación de aspecto de vídeo (aspect-video) -->
-            <div
-              class="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center"
-            >
-              <!-- Contenido centrado (logo + textos) simulando una preview del dashboard -->
-              <div class="text-center">
-                <!-- Logotipo circular degradado -->
-                <div
-                  class="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <!-- Icono de “pantallas / UI” para representar el dashboard -->
-                  <svg
-                    class="w-10 h-10 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-9-9h10a1 1 0 011 1v8a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"
-                    ></path>
-                  </svg>
-                </div>
-                <!-- Título y descripción cortos de la preview -->
-                <p class="text-gray-600 font-medium">Dashboard de Maingoo</p>
-                <p class="text-gray-500 text-sm">
-                  Gestión inteligente en tiempo real
-                </p>
-              </div>
-              <!-- Fin del contenido de la preview -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ===== Fin del placeholder de imagen/video ===== -->
-
+  <div class="text-center">
+    <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2 flex justify-center">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
     </div>
-    <!-- Fin del wrapper del hero -->
+    <div class="text-gray-600 dark:text-gray-400">Ahorra horas de trabajo cada semana</div>
+  </div>
+  <div class="text-center">
+    <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2 flex justify-center">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+    </div>
+    <div class="text-gray-600 dark:text-gray-400">Facturas volcadas automáticamente con IA</div>
+  </div>
+  <div class="text-center">
+    <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2 flex justify-center">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+      </svg>
+    </div>
+    <div class="text-gray-600 dark:text-gray-400">Inventario conectado en tiempo real</div>
+  </div>
+  <div class="text-center">
+    <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2 flex justify-center">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+      </svg>
+    </div>
+    <div class="text-gray-600 dark:text-gray-400">Datos seguros en la nube</div>
+  </div>
+  <div class="text-center">
+    <div class="text-3xl font-bold text-orange-600 dark:text-orange-400 mb-2 flex justify-center">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+      </svg>
+    </div>
+    <div class="text-gray-600 dark:text-gray-400">Plataforma escalable y modular</div>
+  </div>
+  <div class="text-center">
+    <div class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2 flex justify-center">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+      </svg>
+    </div>
+    <div class="text-gray-600 dark:text-gray-400">Diseñado junto a gerentes reales</div>
+  </div>
+</div>
+
 
   </div>
-  <!-- Fin del contenedor central -->
-
 </section>
-<!-- ===== Fin de la sección principal ===== -->
