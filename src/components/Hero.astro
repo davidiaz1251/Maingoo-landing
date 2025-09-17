@@ -56,9 +56,13 @@
             height: 1em;
           }
           .changing-business::after {
-            color: white;
+            color: rgb(31 41 55);
             position: absolute;
             left: 0;
+          }
+
+          :global(.dark) .changing-business::after {
+            color: white;
           }
         }
 
@@ -87,9 +91,13 @@
             height: 1.2em;
           }
           .changing-business::after {
-            color: white;
+            color: rgb(31 41 55);
             position: relative;
             display: inline-block;
+          }
+
+          :global(.dark) .changing-business::after {
+            color: white;
           }
         }
 
