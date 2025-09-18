@@ -1,0 +1,524 @@
+---
+
+---
+
+<!-- Chat Widget -->
+<div id="chat-widget" class="fixed bottom-6 right-6 z-50">
+  <!-- Chat Button -->
+  <button
+    id="chat-toggle"
+    class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group"
+    aria-label="Abrir chat"
+  >
+    <!-- Chat Icon -->
+    <svg
+      id="chat-icon"
+      class="w-6 h-6 transition-transform duration-300"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+      ></path>
+    </svg>
+    <!-- Close Icon -->
+    <svg
+      id="close-icon"
+      class="w-6 h-6 hidden transition-transform duration-300"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+
+    <!-- Notification Dot -->
+    <div
+      id="notification-dot"
+      class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"
+    >
+    </div>
+  </button>
+
+  <!-- Chat Window -->
+  <div
+    id="chat-window"
+    class="absolute bottom-20 right-0 w-80 h-[480px] bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-purple-200/50 dark:border-purple-700/30 transform origin-bottom-right scale-0 opacity-0 transition-all duration-300 overflow-hidden backdrop-blur-sm"
+  >
+    <!-- Chat Header -->
+    <div
+      class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white p-4 rounded-t-lg"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm">Asistente Maingoo</h3>
+            <div class="flex items-center space-x-1 text-xs opacity-90">
+              <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>En línea</span>
+            </div>
+          </div>
+        </div>
+        <button
+          id="minimize-chat"
+          class="p-1 hover:bg-white/20 rounded transition-colors"
+          aria-label="Minimizar chat"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20 12H4"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Messages -->
+    <div
+      id="chat-messages"
+      class="flex-1 p-4 space-y-3 overflow-y-auto h-80 bg-gradient-to-br from-blue-50/50 via-white to-purple-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+    >
+      <!-- Welcome Message -->
+      <div class="flex items-start space-x-2">
+        <div
+          class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 rounded-full flex items-center justify-center flex-shrink-0"
+        >
+          <svg
+            class="w-4 h-4 text-white"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm max-w-xs border border-purple-100 dark:border-purple-900/30"
+        >
+          <p class="text-sm text-gray-800 dark:text-gray-200">
+            ¡Hola! 👋 Soy el asistente de Maingoo. ¿En qué puedo ayudarte hoy?
+          </p>
+          <span class="text-xs text-gray-500 dark:text-gray-400 mt-1 block"
+            >Ahora</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input -->
+    <div
+      class="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-b-lg"
+    >
+      <div class="flex space-x-2">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Escribe tu mensaje..."
+          class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm transition-all duration-300"
+        />
+        <button
+          id="send-message"
+          class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white px-4 py-2 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+          </svg>
+        </button>
+      </div>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+        Conectado con Maingoo AI
+      </p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  class ChatWidget {
+    constructor() {
+      this.isOpen = false;
+      this.hasInitialAnimation = false;
+      this.n8nWebhookUrl =
+        "https://n8n-production-11ca.up.railway.app/webhook/629958dd-5189-461b-8b62-9991c83bbbcb"; // Aquí va la URL del webhook de n8n
+
+      // Generar un sessionId único para esta sesión del chat
+      this.sessionId = this.generateSessionId();
+
+      this.initializeElements();
+      this.bindEvents();
+      this.startInitialAnimation();
+    }
+
+    initializeElements() {
+      this.chatToggle = document.getElementById("chat-toggle");
+      this.chatWindow = document.getElementById("chat-window");
+      this.chatIcon = document.getElementById("chat-icon");
+      this.closeIcon = document.getElementById("close-icon");
+      this.notificationDot = document.getElementById("notification-dot");
+      this.minimizeChat = document.getElementById("minimize-chat");
+      this.chatInput = document.getElementById("chat-input");
+      this.sendButton = document.getElementById("send-message");
+      this.chatMessages = document.getElementById("chat-messages");
+    }
+
+    bindEvents() {
+      // Toggle chat
+      this.chatToggle.addEventListener("click", () => this.toggleChat());
+      this.minimizeChat.addEventListener("click", () => this.closeChat());
+
+      // Send message events
+      this.sendButton.addEventListener("click", () => this.sendMessage());
+      this.chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          this.sendMessage();
+        }
+      });
+
+      // Enable/disable send button based on input
+      this.chatInput.addEventListener("input", () => {
+        this.sendButton.disabled = !this.chatInput.value.trim();
+      });
+
+      // Click outside to close
+      document.addEventListener("click", (e) => {
+        if (
+          this.isOpen &&
+          !document.getElementById("chat-widget").contains(e.target)
+        ) {
+          this.closeChat();
+        }
+      });
+    }
+
+    startInitialAnimation() {
+      // Show notification dot after 3 seconds
+      setTimeout(() => {
+        if (!this.hasInitialAnimation) {
+          this.notificationDot.classList.remove("hidden");
+          this.chatToggle.classList.add("animate-bounce");
+
+          // Stop bounce after 2 seconds
+          setTimeout(() => {
+            this.chatToggle.classList.remove("animate-bounce");
+          }, 2000);
+        }
+      }, 3000);
+    }
+
+    toggleChat() {
+      if (this.isOpen) {
+        this.closeChat();
+      } else {
+        this.openChat();
+      }
+    }
+
+    openChat() {
+      this.isOpen = true;
+      this.hasInitialAnimation = true;
+
+      // Hide notification dot
+      this.notificationDot.classList.add("hidden");
+
+      // Update icons
+      this.chatIcon.classList.add("hidden");
+      this.closeIcon.classList.remove("hidden");
+
+      // Show chat window
+      this.chatWindow.classList.remove("scale-0", "opacity-0");
+      this.chatWindow.classList.add("scale-100", "opacity-100");
+
+      // Focus input
+      setTimeout(() => {
+        this.chatInput.focus();
+      }, 300);
+    }
+
+    closeChat() {
+      this.isOpen = false;
+
+      // Update icons
+      this.chatIcon.classList.remove("hidden");
+      this.closeIcon.classList.add("hidden");
+
+      // Hide chat window
+      this.chatWindow.classList.remove("scale-100", "opacity-100");
+      this.chatWindow.classList.add("scale-0", "opacity-0");
+    }
+
+    async sendMessage() {
+      const message = this.chatInput.value.trim();
+      if (!message) return;
+
+      // Add user message to chat
+      this.addMessage(message, "user");
+
+      // Clear input
+      this.chatInput.value = "";
+      this.sendButton.disabled = true;
+
+      // Show typing indicator
+      this.showTypingIndicator();
+
+      try {
+        // Send to n8n webhook
+        const response = await this.sendToN8n(message);
+
+        // Remove typing indicator
+        this.hideTypingIndicator();
+
+        // Add bot response - manejo más flexible de la respuesta
+        if (response) {
+          // Intenta diferentes campos de respuesta que n8n podría usar
+          const botMessage =
+            response.message ||
+            response.output ||
+            response.reply ||
+            response.text ||
+            response.response ||
+            "¡Gracias por contactarnos! Un representante se pondrá en contacto contigo pronto. 📧";
+          this.addMessage(botMessage, "bot");
+        } else {
+          this.addMessage(
+            "¡Perfecto! Tu mensaje ha sido recibido. Te contactaremos pronto. ✨",
+            "bot"
+          );
+        }
+      } catch (error) {
+        this.hideTypingIndicator();
+
+        // Mensaje más amigable en caso de error
+        this.addMessage(
+          "¡Gracias por tu mensaje! 😊 Lo hemos recibido correctamente y nuestro equipo te contactará pronto.",
+          "bot"
+        );
+      }
+    }
+
+    async sendToN8n(message) {
+      if (!this.n8nWebhookUrl) {
+        return null;
+      }
+
+      const payload = {
+        message: message,
+        sessionId: this.sessionId,
+        timestamp: new Date().toISOString(),
+        source: "website-chat",
+        url: window.location.href,
+      };
+
+      const response = await fetch(this.n8nWebhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+
+      const responseData = await response.json();
+      return responseData;
+    }
+
+    addMessage(message, sender) {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = "flex items-start space-x-2";
+
+      const isUser = sender === "user";
+
+      if (isUser) {
+        messageDiv.className += " justify-end";
+        messageDiv.innerHTML = `
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-lg p-3 shadow-sm max-w-xs">
+            <p class="text-sm">${this.escapeHtml(message)}</p>
+            <span class="text-xs opacity-75 mt-1 block">Ahora</span>
+          </div>
+          <div class="w-6 h-6 bg-gradient-to-r from-gray-400 to-gray-500 dark:from-gray-500 dark:to-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm max-w-xs border border-purple-100 dark:border-purple-900/30">
+            <p class="text-sm text-gray-800 dark:text-gray-200">${this.escapeHtml(message)}</p>
+            <span class="text-xs text-gray-500 dark:text-gray-400 mt-1 block">Ahora</span>
+          </div>
+        `;
+      }
+
+      this.chatMessages.appendChild(messageDiv);
+      this.scrollToBottom();
+    }
+
+    showTypingIndicator() {
+      const typingDiv = document.createElement("div");
+      typingDiv.id = "typing-indicator";
+      typingDiv.className = "flex items-start space-x-2";
+      typingDiv.innerHTML = `
+        <div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm border border-purple-100 dark:border-purple-900/30">
+          <div class="flex space-x-1">
+            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+            <div class="w-2 h-2 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+          </div>
+        </div>
+      `;
+
+      this.chatMessages.appendChild(typingDiv);
+      this.scrollToBottom();
+    }
+
+    hideTypingIndicator() {
+      const typingIndicator = document.getElementById("typing-indicator");
+      if (typingIndicator) {
+        typingIndicator.remove();
+      }
+    }
+
+    scrollToBottom() {
+      this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+    }
+
+    escapeHtml(text) {
+      const map = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;",
+      };
+      return text.replace(/[&<>"']/g, (m) => map[m]);
+    }
+
+    // Generate a unique session ID for this chat session
+    generateSessionId() {
+      // Intentar obtener sessionId existente del sessionStorage
+      let sessionId = sessionStorage.getItem("maingoo_chat_session_id");
+
+      if (!sessionId) {
+        // Si no existe, crear uno nuevo y guardarlo
+        const timestamp = Date.now();
+        const random = Math.random().toString(36).substring(2, 15);
+        sessionId = `chat_${timestamp}_${random}`;
+
+        // Guardar en sessionStorage para que persista durante toda la sesión del navegador
+        sessionStorage.setItem("maingoo_chat_session_id", sessionId);
+      }
+
+      return sessionId;
+    }
+
+    // Method to configure N8n webhook URL
+    setN8nWebhookUrl(url) {
+      this.n8nWebhookUrl = url;
+    }
+  }
+
+  // Initialize chat widget when DOM is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    window.chatWidget = new ChatWidget();
+
+    // Configurar la URL del webhook de n8n aquí
+    // window.chatWidget.setN8nWebhookUrl('https://tu-n8n-instance.com/webhook/chat');
+  });
+</script>
+
+<style>
+  /* Custom scrollbar for chat messages */
+  #chat-messages::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  #chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #chat-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 2px;
+  }
+
+  .dark #chat-messages::-webkit-scrollbar-thumb {
+    background: #4a5568;
+  }
+
+  /* Animation for smooth transitions */
+  #chat-window {
+    transform-origin: bottom right;
+  }
+
+  /* Bounce animation keyframes */
+  @keyframes bounce {
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+      transform: translate3d(0, -30px, 0);
+    }
+    70% {
+      transform: translate3d(0, -15px, 0);
+    }
+    90% {
+      transform: translate3d(0, -4px, 0);
+    }
+  }
+</style>
