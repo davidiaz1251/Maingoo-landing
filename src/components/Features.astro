@@ -1,10 +1,126 @@
 ---
+const features = [
+  {
+    id: 1,
+    title: "Carga Automática de Facturas",
+    description: "Procesa albaranes y facturas en segundos con una precisión del 99%.",
+    gradient: "from-blue-50 to-blue-100",
+    darkGradient: "dark:from-blue-900/30 dark:to-blue-800/30",
+    iconGradient: "from-blue-600 to-blue-700",
+    expandedContent: {
+      video: "/videos/facturacion-demo.mp4",
+      description: "Nuestro sistema de reconocimiento de documentos utiliza IA avanzada para extraer automáticamente toda la información relevante de tus facturas y albaranes. Procesamos fechas, importes, conceptos, impuestos y más, todo con una precisión superior al 99%.",
+      features: [
+        "Reconocimiento automático de proveedores",
+        "Extracción de líneas de factura",
+        "Validación automática de importes",
+        "Detección de duplicados",
+        "Archivo digital organizado"
+      ]
+    }
+  },
+  {
+    id: 2,
+    title: "Análisis Predictivo",
+    description: "Anticipa la demanda, ajusta inventario y detecta tendencias antes que nadie.",
+    gradient: "from-purple-50 to-purple-100",
+    darkGradient: "dark:from-purple-900/30 dark:to-purple-800/30",
+    iconGradient: "from-purple-600 to-purple-700",
+    expandedContent: {
+      video: "/videos/analisis-demo.mp4",
+      description: "Utiliza el poder del machine learning para predecir tendencias de ventas, comportamientos de clientes y necesidades de inventario. Nuestros algoritmos aprenden constantemente de tus datos para mejorar la precisión de las predicciones.",
+      features: [
+        "Predicción de ventas por temporada",
+        "Análisis de tendencias de mercado",
+        "Optimización de niveles de stock",
+        "Identificación de patrones de compra",
+        "Recomendaciones personalizadas"
+      ]
+    }
+  },
+  {
+    id: 3,
+    title: "Inventario Inteligente",
+    description: "Controla el stock en tiempo real con alertas y sugerencias de pedidos.",
+    gradient: "from-green-50 to-green-100",
+    darkGradient: "dark:from-green-900/30 dark:to-green-800/30",
+    iconGradient: "from-green-600 to-green-700",
+    expandedContent: {
+      video: "/videos/inventario-demo.mp4",
+      description: "Mantén un control total sobre tu inventario con actualizaciones en tiempo real y gestión automatizada. El sistema aprende de tus patrones de venta para sugerir pedidos óptimos y prevenir roturas de stock.",
+      features: [
+        "Monitorización en tiempo real",
+        "Alertas de stock bajo",
+        "Sugerencias de reposición",
+        "Gestión de múltiples almacenes",
+        "Trazabilidad completa de productos"
+      ]
+    }
+  },
+  {
+    id: 4,
+    title: "Reportes Claros",
+    description: "Genera informes automáticos de costes, márgenes y rendimiento sin esfuerzo.",
+    gradient: "from-orange-50 to-orange-100",
+    darkGradient: "dark:from-orange-900/30 dark:to-orange-800/30",
+    iconGradient: "from-orange-600 to-orange-700",
+    expandedContent: {
+      video: "/videos/reportes-demo.mp4",
+      description: "Obtén insights valiosos de tu negocio con informes automatizados y personalizables. Visualiza tus datos de forma clara y toma decisiones informadas con métricas actualizadas en tiempo real.",
+      features: [
+        "Dashboards interactivos",
+        "Informes personalizables",
+        "Métricas clave de rendimiento",
+        "Exportación en múltiples formatos",
+        "Programación de informes automáticos"
+      ]
+    }
+  },
+  {
+    id: 5,
+    title: "Optimización de Costes",
+    description: "Detecta oportunidades de ahorro y mejora tus márgenes de manera más efectiva.",
+    gradient: "from-red-50 to-red-100",
+    darkGradient: "dark:from-red-900/30 dark:to-red-800/30",
+    iconGradient: "from-red-600 to-red-700",
+    expandedContent: {
+      video: "/videos/costes-demo.mp4",
+      description: "Identifica y aprovecha oportunidades de ahorro con nuestro sistema de optimización de costes. Analiza gastos, compara proveedores y maximiza tus márgenes de beneficio de forma inteligente.",
+      features: [
+        "Análisis de gastos por categoría",
+        "Comparativa de proveedores",
+        "Detección de gastos innecesarios",
+        "Sugerencias de optimización",
+        "Seguimiento de ahorros conseguidos"
+      ]
+    }
+  },
+  {
+    id: 6,
+    title: "Integración Total",
+    description: "Conecta con tus herramientas favoritas y centraliza toda la información.",
+    gradient: "from-indigo-50 to-indigo-100",
+    darkGradient: "dark:from-indigo-900/30 dark:to-indigo-800/30",
+    iconGradient: "from-indigo-600 to-indigo-700",
+    expandedContent: {
+      video: "/videos/integracion-demo.mp4",
+      description: "Conecta Maingoo con todas tus herramientas de gestión favoritas. Centraliza la información y automatiza flujos de trabajo entre diferentes plataformas de manera seamless.",
+      features: [
+        "Integración con ERPs populares",
+        "Sincronización con e-commerce",
+        "Conexión con sistemas contables",
+        "APIs personalizables",
+        "Automatización entre plataformas"
+      ]
+    }
+  }
+];
 ---
 
-<section id="features" class="relative pt-16 pb-16 bg-white dark:bg-gray-900">
+<section id="features" class="relative pt-12 pb-12 bg-white dark:bg-gray-900">
   <div class="container mx-auto px-6">
     <!-- Section Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-10">
       <h2 class="text-3xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
         Características que 
         <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -16,93 +132,308 @@
         Descubre cómo Maingoo utiliza la inteligencia artificial para simplificar tu gestión diaria
       </p>
     </div>
+
+    <script>
+      interface HTMLFeatureElement extends HTMLElement {
+        dataset: {
+          featureId: string;
+        };
+      }
+
+      // Estado para controlar qué feature está expandida
+      let expandedFeature: string | null = null;
+
+      // Función para expandir/contraer features
+      function toggleFeature(featureId: string): void {
+        const features = document.querySelectorAll<HTMLFeatureElement>('.feature-card');
+        const grid = document.querySelector('.features-grid');
+        
+        if (!grid) return;
+
+        const targetFeature = Array.from(features).find(f => f.dataset.featureId === featureId);
+        if (!targetFeature) return;
+
+        if (expandedFeature === featureId) {
+          // Contraer
+          expandedFeature = null;
+          grid.classList.remove('has-expanded');
+          
+          features.forEach(f => {
+            f.classList.remove('expanded');
+            f.classList.add('hover:shadow-xl');
+            const normalContent = f.querySelector('.feature-normal');
+            const expandedContent = f.querySelector('.expanded-content');
+            if (normalContent) normalContent.classList.remove('hidden');
+            if (expandedContent) expandedContent.classList.add('hidden');
+
+            // Restaurar posición original
+            const originalOrder = parseInt(f.dataset.featureId) - 1;
+            f.style.order = '';
+          });
+
+          // Scroll suave hacia la posición original
+          targetFeature.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          // Expandir
+          expandedFeature = featureId;
+          grid.classList.add('has-expanded');
+
+          // Reordenar las features
+          features.forEach(f => {
+            if (f.dataset.featureId === featureId) {
+              f.classList.add('expanded');
+              f.classList.remove('hover:shadow-xl');
+              f.style.order = '0'; // Siempre primero
+              const normalContent = f.querySelector('.feature-normal');
+              const expandedContent = f.querySelector('.expanded-content');
+              if (normalContent) normalContent.classList.add('hidden');
+              if (expandedContent) expandedContent.classList.remove('hidden');
+            } else {
+              f.classList.remove('expanded');
+              f.style.order = (parseInt(f.dataset.featureId) + 1).toString();
+            }
+          });
+
+          // Scroll suave hacia la feature expandida
+          targetFeature.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      // Agregar event listeners
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll<HTMLFeatureElement>('.feature-card').forEach(card => {
+          card.addEventListener('click', (e: Event) => {
+            const target = e.target as HTMLElement;
+            if (target && !target.closest('.close-button')) {
+              toggleFeature(card.dataset.featureId);
+            }
+          });
+        });
+
+        document.querySelectorAll('.close-button').forEach(button => {
+          button.addEventListener('click', (e: Event) => {
+            e.stopPropagation();
+            if (expandedFeature) {
+              toggleFeature(expandedFeature);
+            }
+          });
+        });
+      });
+    </script>
+
+    <style>
+      .features-grid {
+        min-height: 600px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        position: relative;
+      }
+
+      .feature-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center;
+        height: 100%;
+        opacity: 1;
+        grid-column: span 1;
+      }
+
+      .feature-card.expanded {
+        grid-row: 1;
+        grid-column: 1 / -1;
+        width: calc(100% + (100vw - 100%) / 2);
+        position: relative;
+        min-height: 600px;
+        z-index: 20;
+        border-radius: 0;
+        box-sizing: border-box;
+        border: 4px dashed #3b82f6; /* Borde azul provisional */
+      }
+
+      .features-grid.has-expanded {
+        grid-template-rows: auto auto;
+        row-gap: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded) {
+        grid-row: 2;
+        padding: 0.75rem;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+        min-height: 64px;
+        transform: translateY(0);
+        transition: all 0.3s ease;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded):hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Estilo para las features no expandidas */
+      .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 240px;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal > div {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal h3 {
+        display: block;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgb(75 85 99);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal p {
+        display: none;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded):hover .feature-normal h3 {
+        color: rgb(17 24 39);
+      }
+
+      .feature-card .feature-normal,
+      .feature-card .expanded-content {
+        transition: all 0.3s ease-in-out;
+      }
+
+      .feature-card .expanded-content {
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .feature-card.expanded .expanded-content {
+        opacity: 1;
+        height: auto;
+        padding: 2rem;
+      }
+
+      .feature-card:not(.expanded) {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .close-button {
+        transition: all 0.2s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .feature-card.expanded .close-button {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .close-button:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
     
     <!-- Features Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Feature 1: Volcado de Datos IA -->
-      <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 p-8 rounded-2xl hover:shadow-xl transition-all group">
-        <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <!-- Documento con líneas de texto -->
-            <rect x="4" y="3" width="14" height="18" rx="2" ry="2" stroke-width="2"/>
-            <path d="M8 7h6M8 11h6M8 15h4" stroke-width="2" stroke-linecap="round"/>
-            <!-- Flecha de transferencia -->
-            <path d="M19 12l-2-2M19 12l-2 2M19 12h-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Símbolo de IA (cerebro/chip) -->
-            <circle cx="22" cy="12" r="2" fill="currentColor"/>
-            <path d="M20.5 10.5l1 1M23.5 10.5l-1 1M20.5 13.5l1-1M23.5 13.5l-1-1" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+    <div class="features-grid grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-2 relative">
+      {features.slice(0, 6).map((feature) => (
+        <div
+          class="feature-card bg-gradient-to-br p-6 rounded-2xl hover:shadow-xl transition-all group cursor-pointer relative z-10"
+          data-feature-id={feature.id}
+        >
+          <!-- Contenido normal -->
+          <div class="feature-normal">
+            <div class={`w-14 h-14 bg-gradient-to-r ${feature.iconGradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- SVG path se mantiene igual -->
+                <rect x="4" y="3" width="14" height="18" rx="2" ry="2" stroke-width="2"/>
+                <path d="M8 7h6M8 11h6M8 15h4" stroke-width="2" stroke-linecap="round"/>
+                <path d="M19 12l-2-2M19 12l-2 2M19 12h-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="22" cy="12" r="2" fill="currentColor"/>
+                <path d="M20.5 10.5l1 1M23.5 10.5l-1 1M20.5 13.5l1-1M23.5 13.5l-1-1" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">{feature.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+
+          <!-- Contenido expandido -->
+          <div class="expanded-content hidden">
+            <button class="close-button absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors z-10">
+              <svg class="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+
+            <div class="w-full h-full relative">
+              <div class="grid grid-cols-2 h-full">
+                <div class="p-8 space-y-8">
+                  <div>
+                    <h4 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">{feature.title}</h4>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {feature.expandedContent.description}
+                    </p>
+                  </div>
+                  <ul class="space-y-4">
+                    {feature.expandedContent.features.map((item) => (
+                      <li class="flex items-start space-x-4">
+                        <svg class="w-6 h-6 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-lg text-gray-600 dark:text-gray-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden aspect-[16/9]">
+                  {feature.expandedContent.video && (
+                    <video
+                      class="w-full h-full object-contain"
+                      controls
+                      poster="/images/features/demo-poster.jpg"
+                    >
+                      <source src={feature.expandedContent.video} type="video/mp4" />
+                      Tu navegador no soporta el elemento de video.
+                    </video>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Carga Automática de Facturas</h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          Procesa albaranes y facturas en segundos con una precisión del 99%.
-        </p>
-      </div>
-      
-      <!-- Feature 2: Análisis Predictivo -->
-      <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/30 p-8 rounded-2xl hover:shadow-xl transition-all group">
-        <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Análisis Predictivo</h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          Anticipa la demanda, ajusta inventario y detecta tendencias antes que nadie.
-        </p>
-      </div>
-      
-      <!-- Feature 3: Gestión de Inventario -->
-      <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/30 p-8 rounded-2xl hover:shadow-xl transition-all group">
-        <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-green-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Inventario Inteligente</h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          Controla el stock en tiempo real con alertas y sugerencias de pedidos.
-        </p>
-      </div>
-      
-      <!-- Feature 4: Reportes Automáticos -->
-      <div class="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/30 p-8 rounded-2xl hover:shadow-xl transition-all group">
-        <div class="w-16 h-16 bg-gradient-to-r from-orange-600 to-orange-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Reportes Claros</h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          Genera informes automáticos de costes, márgenes y rendimiento sin esfuerzo.
-        </p>
-      </div>
-      
-      <!-- Feature 5: Optimización de Costos -->
-      <div class="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/30 dark:to-red-800/30 p-8 rounded-2xl hover:shadow-xl transition-all group">
-        <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-red-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Optimización de Costes</h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          Detecta oportunidades de ahorro y mejora tus márgenes de manera más efectiva.
-        </p>
-      </div>
-      
-      <!-- Feature 6: Integración Total -->
-      <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/30 dark:to-indigo-800/30 p-8 rounded-2xl hover:shadow-xl transition-all group">
-        <div class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Integración Completa</h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          TPV, proveedores, horarios, inventarios, ventas y plataformas de delivery en una sola vista.
-        </p>
-      </div>
+      ))}
     </div>
   </div>
 </section>
