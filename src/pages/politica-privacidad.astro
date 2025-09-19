@@ -48,37 +48,36 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
           </p>
         </div>        <div class="prose prose-lg max-w-none dark:prose-invert">
           <section class="space-y-12">
-            <h2 id="resumen" class="text-3xl font-bold text-white mb-8 text-center">Resumen</h2>
+            <h2 id="resumen" class="text-3xl font-bold text-white mb-8">Resumen</h2>
             <div class="grid md:grid-cols-2 gap-8">
               <!-- Datos automáticos -->
-              <div class="bg-[#1A1A1A] rounded-lg p-8">
+              <div class="bg-gray-900 rounded-lg p-8">
                 <h3 class="text-2xl font-semibold text-white mb-6">Datos que recogemos automáticamente</h3>
                 <p class="text-gray-300 mb-4">
                   Recogemos datos sobre usted automáticamente, por ejemplo, cuando visita Maingoo:
                 </p>
-                <div class="space-y-6">
-                  <div class="bg-[#252525] rounded-lg p-6">
-                    <ul class="space-y-3 text-gray-300">
-                      <li class="flex items-center space-x-3">
-                        <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-                        <span>Rastreadores</span>
-                      </li>
-                      <li class="flex items-center space-x-3">
-                        <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-                        <span>Datos de uso</span>
-                      </li>
-                      <li class="flex items-center space-x-3">
-                        <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-                        <span>Cantidad de usuarios</span>
-                      </li>
-                      <li class="flex items-center space-x-3">
-                        <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
-                        <span>Estadísticas de sesión</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="bg-[#252525] rounded-lg p-6">
-                    <p class="text-white mb-4">Terceros de confianza nos ayudan a tratarlos</p>
+                <div class="space-y-4">
+                  <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center space-x-3">
+                      <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+                      <span>Rastreadores</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                      <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+                      <span>Datos de uso</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                      <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+                      <span>Cantidad de usuarios</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                      <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+                      <span>Estadísticas de sesión</span>
+                    </li>
+                  </ul>
+                  
+                  <div class="mt-6">
+                    <p class="text-gray-300 mb-2">Terceros de confianza que nos ayudan:</p>
                     <ul class="space-y-2 text-gray-300">
                       <li class="flex items-center space-x-3">
                         <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
@@ -138,7 +137,7 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
           </section>
 
           <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            <h2 id="tratamiento" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
               Titular y Responsable del tratamiento de los Datos
             </h2>
             <a id="titular"></a>
@@ -161,7 +160,7 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
           </section>
 
           <section class="mb-12">
-            <h2 id="tipos-datos" class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Tipos de Datos que recogemos</h2>
+            <h2 id="tipos-datos" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Tipos de Datos que recogemos</h2>
             
             <p class="text-gray-600 dark:text-gray-300 mb-6">
               Entre las clases de Datos Personales que recoge esta Aplicación, ya sea directamente o a través de terceros, se encuentran:
@@ -228,7 +227,7 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
           </section>
 
           <section class="mb-12">
-            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            <h2 id="modalidad" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
               Modalidad y lugar del tratamiento de los Datos recogidos
             </h2>
 
@@ -314,7 +313,7 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
           </section>
 
           <section class="mb-12">
-            <h2 id="informacion-detallada" class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+            <h2 id="informacion-detallada" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
               Información detallada del Tratamiento de los Datos Personales
             </h2>
 
@@ -533,7 +532,7 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
 
                 <!-- Sección: Test de rendimiento -->
                 <div class="space-y-6 mt-8">
-                  <h3 class="text-2xl font-semibold text-white">Test de rendimiento de contenidos y funcionalidades (A/B testing)</h3>
+                  <h2 id="recoleccion-tratamiento" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Información adicional sobre recogida y tratamiento</h2>
                   
                   <p class="text-gray-300 mb-6">
                     Los servicios contenidos en esta sección permiten al Titular rastrear y analizar la respuesta del Usuario en términos de 
@@ -565,8 +564,8 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
                 </div>
 
                 <!-- Sección: Información adicional sobre el tratamiento -->
-                <div class="space-y-8 mt-12 border-t border-gray-800 pt-12">
-                  <h2 id="informacion-adicional" class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                <div class="space-y-8 mt-12 pt-8">
+                  <h2 id="informacion-adicional" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
                     Información adicional sobre el tratamiento
                   </h2>
 
@@ -659,8 +658,8 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
                 </div>
 
                 <!-- Sección: Política de Cookies -->
-                <div class="space-y-6 mt-12 border-t border-gray-800 pt-12">
-                  <h2 id="cookies" class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                <div class="space-y-6 mt-12 space-y-8 mt-12 pt-8">
+                  <h2 id="cookies" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
                     Política de Cookies
                   </h2>
                   
@@ -673,8 +672,8 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
                 </div>
 
                 <!-- Sección: Información adicional para usuarios en la UE -->
-                <div class="space-y-8 mt-12 border-t border-gray-800 pt-12">
-                  <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                <div class="space-y-8 mt-12 pt-8">
+                  <h2 id="mas-info-ue" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
                     Más información para usuarios en la UE
                   </h2>
 
@@ -710,9 +709,6 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
                   </div>
 
                   <!-- Tiempo de retención -->
-                  <div class="bg-gray-900 rounded-lg p-8">
-                    <h3 class="text-2xl font-semibold text-white mb-6">Más información sobre el tiempo de retención</h3>
-                    <div class="space-y-4 text-gray-300">                  <!-- Tiempo de retención -->
                   <div class="bg-gray-900 rounded-lg p-8">
                     <h3 class="text-2xl font-semibold text-white mb-6">Más información sobre el tiempo de retención</h3>
                     <div class="space-y-4 text-gray-300">
@@ -788,11 +784,8 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
                     </p>
                   </div>
 
-                  <!-- Definiciones -->
-                  <div class="bg-gray-900 rounded-lg p-8">
-                    <h3 class="text-2xl font-semibold text-white mb-6">Definiciones y referencias legales</h3>
-
-                  <!-- Derecho de oposición -->
+                      <!-- Definiciones -->
+                  <h2 id="definiciones" class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Definiciones y referencias legales</h2>                  <!-- Derecho de oposición -->
                   <div class="bg-gray-900 rounded-lg p-8">
                     <h3 class="text-2xl font-semibold text-white mb-6">Información sobre el derecho de oposición al tratamiento</h3>
                     <div class="space-y-4 text-gray-300">
@@ -869,9 +862,9 @@ const fecha = new Date(stats.mtime).toLocaleDateString('es-ES', {
                 </div>
 
                 <!-- Sección: Cómo podemos ayudarle -->
-                <div class="space-y-6 mt-12 border-t border-gray-800 pt-12">
+                <div class="space-y-6 mt-12 pt-8 mb-16">
                   <div class="bg-gray-900 rounded-lg p-8">
-                    <h2 class="text-3xl font-bold text-white text-center mb-8">¿Cómo podemos ayudarle?</h2>
+                    <h2 class="text-3xl font-bold text-white text-center mb-8">¿Cómo podemos ayudarte?</h2>
                     
                     <div class="max-w-2xl mx-auto">
                       <h3 class="text-xl font-semibold text-white mb-4">En caso de problemas</h3>
