@@ -161,18 +161,15 @@ const features = [
           features.forEach(f => {
             f.classList.remove('expanded');
             f.classList.add('hover:shadow-xl');
+            f.style.gridColumn = '';
+            f.style.gridRow = '';
             const normalContent = f.querySelector('.feature-normal');
             const expandedContent = f.querySelector('.expanded-content');
             if (normalContent) normalContent.classList.remove('hidden');
             if (expandedContent) expandedContent.classList.add('hidden');
 
             // Restaurar posición original
-            const originalOrder = parseInt(f.dataset.featureId) - 1;
-            f.style.order = '';
           });
-
-          // Scroll suave hacia la posición original
-          targetFeature.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
           // Expandir
           expandedFeature = featureId;
@@ -181,22 +178,23 @@ const features = [
           // Reordenar las features
           features.forEach(f => {
             if (f.dataset.featureId === featureId) {
-              f.classList.add('expanded');
+               f.classList.add('expanded');
+              f.style.gridColumn = '1 / -1';
+              f.style.gridRow = '1';
               f.classList.remove('hover:shadow-xl');
-              f.style.order = '0'; // Siempre primero
               const normalContent = f.querySelector('.feature-normal');
               const expandedContent = f.querySelector('.expanded-content');
               if (normalContent) normalContent.classList.add('hidden');
               if (expandedContent) expandedContent.classList.remove('hidden');
             } else {
               f.classList.remove('expanded');
-              f.style.order = (parseInt(f.dataset.featureId) + 1).toString();
+              f.style.gridColumn = '';
+              f.style.gridRow = '';
             }
           });
 
-          // Scroll suave hacia la feature expandida
-          targetFeature.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        targetFeature.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
       // Agregar event listeners
@@ -224,10 +222,12 @@ const features = [
     <style>
       .features-grid {
         min-height: 600px;
+        position: relative;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         position: relative;
+        grid-auto-flow: row dense;
       }
 
       .feature-card {
@@ -239,25 +239,23 @@ const features = [
       }
 
       .feature-card.expanded {
-        grid-row: 1;
         grid-column: 1 / -1;
-        width: calc(100% + (100vw - 100%) / 2);
+        width: auto;
         position: relative;
         min-height: 600px;
         z-index: 20;
-        border-radius: 0;
+        border-radius: 5px;
         box-sizing: border-box;
-        border: 4px dashed #3b82f6; /* Borde azul provisional */
+        border: 2px solid #3b82f6; /* Borde azul provisional */
+        scroll-margin-top: 120px;
       }
 
       .features-grid.has-expanded {
-        grid-template-rows: auto auto;
         row-gap: 2rem;
         padding-bottom: 2rem;
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded) {
-        grid-row: 2;
         padding: 0.75rem;
         background: transparent;
         display: flex;
@@ -365,7 +363,7 @@ const features = [
     </style>
     
     <!-- Features Grid -->
-    <div class="features-grid grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-2 relative">
+    <div class="features-grid grid grid-cols-3 gap-6 relative">
       {features.slice(0, 6).map((feature) => (
         <div
           class="feature-card bg-gradient-to-br p-6 rounded-2xl hover:shadow-xl transition-all group cursor-pointer relative z-10"
