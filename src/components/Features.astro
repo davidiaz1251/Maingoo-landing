@@ -224,10 +224,8 @@ const features = [
         min-height: 600px;
         position: relative;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         position: relative;
-        grid-auto-flow: row dense;
       }
 
       .feature-card {
@@ -363,7 +361,7 @@ const features = [
     </style>
     
     <!-- Features Grid -->
-    <div class="features-grid grid grid-cols-3 gap-6 relative">
+    <div class="features-grid grid grid-flow-row-dense grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
       {features.slice(0, 6).map((feature) => (
         <div
           class="feature-card bg-gradient-to-br p-6 rounded-2xl hover:shadow-xl transition-all group cursor-pointer relative z-10"
@@ -396,7 +394,7 @@ const features = [
             </button>
 
             <div class="w-full h-full relative">
-              <div class="grid grid-cols-2 h-full">
+              <div class="grid grid-cols-1 md:grid-cols-2 h-full">
                 <div class="p-8 space-y-8">
                   <div>
                     <h4 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">{feature.title}</h4>
