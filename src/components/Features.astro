@@ -12,10 +12,9 @@ const features = [
       description: "Nuestro sistema de reconocimiento de documentos utiliza IA avanzada para extraer automáticamente toda la información relevante de tus facturas y albaranes. Procesamos fechas, importes, conceptos, impuestos y más, todo con una precisión superior al 99%.",
       features: [
         "Reconocimiento automático de proveedores",
-        "Extracción de líneas de factura",
         "Validación automática de importes",
         "Detección de duplicados",
-        "Archivo digital organizado"
+        "Archivo digital organizado y seguro"
       ]
     }
   },
@@ -31,10 +30,9 @@ const features = [
       description: "Utiliza el poder del machine learning para predecir tendencias de ventas, comportamientos de clientes y necesidades de inventario. Nuestros algoritmos aprenden constantemente de tus datos para mejorar la precisión de las predicciones.",
       features: [
         "Predicción de ventas por temporada",
-        "Análisis de tendencias de mercado",
         "Optimización de niveles de stock",
         "Identificación de patrones de compra",
-        "Recomendaciones personalizadas"
+        "Recomendaciones personalizadas por cliente"
       ]
     }
   },
@@ -52,8 +50,7 @@ const features = [
         "Monitorización en tiempo real",
         "Alertas de stock bajo",
         "Sugerencias de reposición",
-        "Gestión de múltiples almacenes",
-        "Trazabilidad completa de productos"
+        "Gestión multi-almacén integrada"
       ]
     }
   },
@@ -69,10 +66,9 @@ const features = [
       description: "Obtén insights valiosos de tu negocio con informes automatizados y personalizables. Visualiza tus datos de forma clara y toma decisiones informadas con métricas actualizadas en tiempo real.",
       features: [
         "Dashboards interactivos",
-        "Informes personalizables",
         "Métricas clave de rendimiento",
         "Exportación en múltiples formatos",
-        "Programación de informes automáticos"
+        "Informes programados automáticos"
       ]
     }
   },
@@ -88,10 +84,9 @@ const features = [
       description: "Identifica y aprovecha oportunidades de ahorro con nuestro sistema de optimización de costes. Analiza gastos, compara proveedores y maximiza tus márgenes de beneficio de forma inteligente.",
       features: [
         "Análisis de gastos por categoría",
-        "Comparativa de proveedores",
         "Detección de gastos innecesarios",
-        "Sugerencias de optimización",
-        "Seguimiento de ahorros conseguidos"
+        "Seguimiento de ahorros conseguidos",
+        "Comparativa inteligente de proveedores"
       ]
     }
   },
@@ -108,7 +103,6 @@ const features = [
       features: [
         "Integración con ERPs populares",
         "Sincronización con e-commerce",
-        "Conexión con sistemas contables",
         "APIs personalizables",
         "Automatización entre plataformas"
       ]
@@ -128,9 +122,6 @@ const features = [
         </span>
         tu negocio
       </h2>
-      <p class="text-xl text-gray-600 dark:text-gray-300">
-        Descubre cómo Maingoo utiliza la inteligencia artificial para simplificar tu gestión diaria
-      </p>
     </div>
 
     <script>
@@ -201,6 +192,7 @@ const features = [
 
       // Agregar event listeners
       document.addEventListener('DOMContentLoaded', () => {
+        // Event listener para clicks en las tarjetas
         document.querySelectorAll<HTMLFeatureElement>('.feature-card').forEach(card => {
           card.addEventListener('click', (e: Event) => {
             const target = e.target as HTMLElement;
@@ -210,12 +202,33 @@ const features = [
           });
         });
 
+        // Event listener para el botón de cerrar
         document.querySelectorAll('.close-button').forEach(button => {
           button.addEventListener('click', (e: Event) => {
             e.stopPropagation();
             if (expandedFeature) {
               toggleFeature(expandedFeature);
             }
+          });
+        });
+
+        // Event listener para cerrar al hacer clic fuera
+        document.addEventListener('click', (e: Event) => {
+          if (expandedFeature) {
+            const target = e.target as HTMLElement;
+            const expandedCard = document.querySelector('.feature-card.expanded');
+            
+            // Si el clic fue fuera de la tarjeta expandida
+            if (expandedCard && !expandedCard.contains(target)) {
+              toggleFeature(expandedFeature);
+            }
+          }
+        });
+
+        // Prevenir que los clicks dentro de la tarjeta expandida se propaguen al documento
+        document.querySelectorAll('.feature-card').forEach(card => {
+          card.addEventListener('click', (e: Event) => {
+            e.stopPropagation();
           });
         });
       });
@@ -230,66 +243,81 @@ const features = [
         position: relative;
       }
 
+      /* Grid cuando hay una tarjeta expandida */
+      .features-grid.has-expanded {
+        grid-template-columns: 300px 1fr !important;
+        gap: 1rem !important;
+      }
+
       .feature-card {
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         transform-origin: center;
         height: 100%;
         opacity: 1;
         grid-column: span 1;
+        position: relative;
       }
 
+
+
       .feature-card.expanded {
-        grid-row: 1;
-        grid-column: 1 / -1;
-        width: calc(100% + (100vw - 100%) / 2);
+        grid-column: 2;
+        width: 100%;
         position: relative;
-        min-height: 600px;
+        min-height: 300px;
         z-index: 20;
-        border-radius: 0;
         box-sizing: border-box;
-        border: 4px dashed #3b82f6; /* Borde azul provisional */
       }
 
       .features-grid.has-expanded {
-        grid-template-rows: auto auto;
-        row-gap: 2rem;
-        padding-bottom: 2rem;
+        grid-template-rows: 1fr;
+        padding-bottom: 1rem;
+        align-items: start;
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded) {
-        grid-row: 2;
-        padding: 0.75rem;
+        grid-column: 1; /* Se colocan en la primera columna */
+        padding: 0.25rem 0.5rem;
         background: transparent;
         display: flex;
         align-items: center;
-        justify-content: center;
-        height: 64px;
-        min-height: 64px;
+        height: 50px;
+        min-height: 50px;
         transform: translateY(0);
         transition: all 0.3s ease;
+        margin-bottom: 0.5rem;
+        width: 100%;
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded):hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-2px);
+        transform: translateX(5px);
       }
 
       /* Estilo para las features no expandidas */
       .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        width: 240px;
+        gap: 0.75rem;
+        width: 100%;
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal > div {
-        width: 48px;
-        height: 48px;
-        min-width: 48px;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 0.75rem;
+        border-radius: 0.5rem;
+      }
+
+      /* Ajustar el texto en las tarjetas minimizadas */
+      .features-grid.has-expanded .feature-card:not(.expanded) h3 {
+        font-size: 0.875rem;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal svg {
@@ -306,6 +334,10 @@ const features = [
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+
+      /* Mantener bordes de colores en las tarjetas minimizadas */
+      .features-grid.has-expanded .feature-card:not(.expanded) {
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal p {
@@ -330,7 +362,7 @@ const features = [
       .feature-card.expanded .expanded-content {
         opacity: 1;
         height: auto;
-        padding: 2rem;
+        padding: 0;
       }
 
       .feature-card:not(.expanded) {
@@ -368,7 +400,7 @@ const features = [
     <div class="features-grid grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-2 relative">
       {features.slice(0, 6).map((feature) => (
         <div
-          class="feature-card bg-gradient-to-br p-6 rounded-2xl hover:shadow-xl transition-all group cursor-pointer relative z-10"
+          class="feature-card bg-gray-900/40 backdrop-blur-sm p-6 rounded-2xl hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] border border-white/10 transition-all group cursor-pointer relative z-10"
           data-feature-id={feature.id}
         >
           <!-- Contenido normal -->
@@ -383,51 +415,50 @@ const features = [
                 <path d="M20.5 10.5l1 1M23.5 10.5l-1 1M20.5 13.5l1-1M23.5 13.5l-1-1" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">{feature.title}</h3>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            <h3 class="text-xl font-bold text-white mb-4">{feature.title}</h3>
+            <p class="text-gray-300 leading-relaxed">
               {feature.description}
             </p>
           </div>
 
           <!-- Contenido expandido -->
           <div class="expanded-content hidden">
-            <button class="close-button absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors z-10">
-              <svg class="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-
-            <div class="w-full h-full relative">
-              <div class="grid grid-cols-2 h-full">
-                <div class="p-8 space-y-8">
-                  <div>
-                    <h4 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">{feature.title}</h4>
+            <div class="w-full h-full relative p-0">
+              <div class="flex flex-col gap-4">
+                <!-- Sección superior: título, descripción y video -->
+                <div class="grid grid-cols-2 gap-6">
+                  <div class="space-y-6">
+                    <h4 class="text-4xl font-bold text-gray-800 dark:text-white">{feature.title}</h4>
                     <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
                       {feature.expandedContent.description}
                     </p>
                   </div>
-                  <ul class="space-y-4">
-                    {feature.expandedContent.features.map((item) => (
-                      <li class="flex items-start space-x-4">
+                  <div class="rounded-2xl overflow-hidden aspect-[16/9]">
+                    {feature.expandedContent.video && (
+                      <video
+                        class="w-full h-full object-contain"
+                        controls
+                        poster="/images/features/demo-poster.jpg"
+                      >
+                        <source src={feature.expandedContent.video} type="video/mp4" />
+                        Tu navegador no soporta el elemento de video.
+                      </video>
+                    )}
+                  </div>
+                </div>
+
+                <!-- Grid 2x2 de características -->
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                  {feature.expandedContent.features.map((item) => (
+                    <div class="rounded-lg p-4">
+                      <div class="flex items-start space-x-3">
                         <svg class="w-6 h-6 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         <span class="text-lg text-gray-600 dark:text-gray-300">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden aspect-[16/9]">
-                  {feature.expandedContent.video && (
-                    <video
-                      class="w-full h-full object-contain"
-                      controls
-                      poster="/images/features/demo-poster.jpg"
-                    >
-                      <source src={feature.expandedContent.video} type="video/mp4" />
-                      Tu navegador no soporta el elemento de video.
-                    </video>
-                  )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
