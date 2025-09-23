@@ -3,36 +3,48 @@ const features = [
   {
     id: 1,
     title: "Carga Automática de Facturas",
-    description: "Procesa albaranes y facturas en segundos con una precisión del 99%.",
+    description: "Olvídate de teclear datos: sube tus facturas y albaranes y en segundos tendrás todo registrado, sin errores.",
     gradient: "from-blue-50 to-blue-100",
     darkGradient: "dark:from-blue-900/30 dark:to-blue-800/30",
     iconGradient: "from-blue-600 to-blue-700",
     expandedContent: {
       video: "/videos/facturacion-demo.mp4",
-      description: "Nuestro sistema de reconocimiento de documentos utiliza IA avanzada para extraer automáticamente toda la información relevante de tus facturas y albaranes. Procesamos fechas, importes, conceptos, impuestos y más, todo con una precisión superior al 99%.",
+      // Video sugerido:
+      // Un usuario arrastra un PDF de una factura al sistema → la IA procesa en segundos → 
+      // aparecen los campos rellenados automáticamente (proveedor, fecha, IVA, total) → 
+      // se guarda en un dashboard organizado.
+      description: "Nuestro sistema de análisis de documentos con IA extrae automáticamente toda la información de tus facturas y albaranes: fechas, importes, impuestos y conceptos clave. Todo queda digitalizado y organizado al instante.",
       features: [
         "Reconocimiento automático de proveedores",
         "Validación automática de importes",
         "Detección de duplicados",
-        "Archivo digital organizado y seguro"
+        "Archivo digital organizado y seguro",
+        "Clasificación automatica de productos y categorías",
+        "Integración directa con inventario y costes"
       ]
     }
   },
   {
     id: 2,
     title: "Análisis Predictivo",
-    description: "Anticipa la demanda, ajusta inventario y detecta tendencias antes que nadie.",
+    description: "Anticípate: ajusta inventario, prevé ventas y detecta tendencias antes que tu competencia.",
     gradient: "from-purple-50 to-purple-100",
     darkGradient: "dark:from-purple-900/30 dark:to-purple-800/30",
     iconGradient: "from-purple-600 to-purple-700",
     expandedContent: {
       video: "/videos/analisis-demo.mp4",
-      description: "Utiliza el poder del machine learning para predecir tendencias de ventas, comportamientos de clientes y necesidades de inventario. Nuestros algoritmos aprenden constantemente de tus datos para mejorar la precisión de las predicciones.",
+      // Video sugerido:
+      // Gráfico de ventas que se actualiza automáticamente → la IA proyecta una curva de demanda futura → 
+      // aparecen alertas de “más stock en verano” o “baja demanda en invierno” → 
+      // cierre con un panel de recomendaciones.
+      description: "Nuestra IA aprende de tu negocio y te da predicciones claras sobre ventas, temporadas y consumo. Podrás saber qué se venderá más, cuándo pedir y cómo evitar quedarte corto o con exceso de stock.",
       features: [
         "Predicción de ventas por temporada",
         "Optimización de niveles de stock",
         "Identificación de patrones de compra",
-        "Recomendaciones personalizadas por cliente"
+        "Recomendaciones personalizadas",
+        "Alertas de picos de demanda",
+        "Sugerencias de ofertas y promociones"
       ]
     }
   },
@@ -45,30 +57,42 @@ const features = [
     iconGradient: "from-green-600 to-green-700",
     expandedContent: {
       video: "/videos/inventario-demo.mp4",
+      // Video sugerido:
+      // Vista de almacén con productos → el sistema marca en rojo los que están bajos → 
+      // se genera una alerta automática → el sistema propone un pedido óptimo → 
+      // aparece un check de confirmación de pedido.
       description: "Mantén un control total sobre tu inventario con actualizaciones en tiempo real y gestión automatizada. El sistema aprende de tus patrones de venta para sugerir pedidos óptimos y prevenir roturas de stock.",
       features: [
         "Monitorización en tiempo real",
         "Alertas de stock bajo",
         "Sugerencias de reposición",
-        "Gestión multi-almacén integrada"
+        "Gestión multi-almacén integrada",
+        "Control de caducidades y mermas",
+        "Actualización automática tras ventas y recepciones"
       ]
     }
   },
   {
     id: 4,
-    title: "Reportes Claros",
-    description: "Genera informes automáticos de costes, márgenes y rendimiento sin esfuerzo.",
+    title: "Maingoo IA",
+    description: "Pregunta lo que quieras sobre tu negocio y obtén la respuesta al instante, como si hablaras con tu propio consultor.",
     gradient: "from-orange-50 to-orange-100",
     darkGradient: "dark:from-orange-900/30 dark:to-orange-800/30",
     iconGradient: "from-orange-600 to-orange-700",
     expandedContent: {
       video: "/videos/reportes-demo.mp4",
-      description: "Obtén insights valiosos de tu negocio con informes automatizados y personalizables. Visualiza tus datos de forma clara y toma decisiones informadas con métricas actualizadas en tiempo real.",
+      // Video sugerido:
+      // Un usuario abre el chat y escribe: “¿Cuánto gasté en carne este mes?” → 
+      // el sistema responde con una cifra y un gráfico → el usuario pide “Compárame con el mes pasado” → 
+      // aparece el gráfico comparativo con recomendación breve.
+      description: "Maingoo incluye un chat integrado que entiende tus preguntas en lenguaje natural. Puedes pedir cifras, comparativas o explicaciones y el sistema responde con claridad, gráficos o recomendaciones prácticas. Toma decisiones rápidas con informes automáticos y fáciles de entender. Visualiza costes, márgenes y beneficios de un solo vistazo. Nunca había sido tan fácil gestionar un negocio de hostelería.",
       features: [
-        "Dashboards interactivos",
+        "Respuestas inmediatas en lenguaje natural",
         "Métricas clave de rendimiento",
-        "Exportación en múltiples formatos",
-        "Informes programados automáticos"
+        "Dashboards interactivos",
+        "Informes programados automáticos o bajo demanda",
+        "Interacción accesible desde cualquier módulo de la app",
+        "Recomendaciones prácticas basadas en tus datos"
       ]
     }
   },
@@ -81,30 +105,42 @@ const features = [
     iconGradient: "from-red-600 to-red-700",
     expandedContent: {
       video: "/videos/costes-demo.mp4",
+      // Video sugerido:
+      // El sistema muestra un gráfico de gastos por categorías → 
+      // resalta en rojo “Carne: +20% más cara con tu proveedor actual” → 
+      // aparece una comparativa de proveedores → se marca una sugerencia de ahorro estimado.
       description: "Identifica y aprovecha oportunidades de ahorro con nuestro sistema de optimización de costes. Analiza gastos, compara proveedores y maximiza tus márgenes de beneficio de forma inteligente.",
       features: [
         "Análisis de gastos por categoría",
         "Detección de gastos innecesarios",
         "Seguimiento de ahorros conseguidos",
-        "Comparativa inteligente de proveedores"
+        "Comparativa inteligente de proveedores",
+        "Negociación sugerida con proveedores",
+        "Alertas de productos con sobrecostes"
       ]
     }
   },
   {
     id: 6,
     title: "Integración Total",
-    description: "Conecta con tus herramientas favoritas y centraliza toda la información.",
+    description: "Todo en un solo sistema: TPV, horarios, inventario y facturación, sin depender de otras plataformas.",
     gradient: "from-indigo-50 to-indigo-100",
     darkGradient: "dark:from-indigo-900/30 dark:to-indigo-800/30",
     iconGradient: "from-indigo-600 to-indigo-700",
     expandedContent: {
       video: "/videos/integracion-demo.mp4",
-      description: "Conecta Maingoo con todas tus herramientas de gestión favoritas. Centraliza la información y automatiza flujos de trabajo entre diferentes plataformas de manera seamless.",
+      // Video sugerido:
+      // Animación que conecta módulos: TPV → Inventario → Facturación → Horarios 
+      // → al registrar una venta en el TPV, se descuenta el stock automáticamente y se actualiza un informe → 
+      // cierre con un panel central que muestra todo unido.
+      description: "Maingoo integra de forma nativa todos los procesos de tu negocio en un único lugar: TPV, inventario, horarios, proveedores, facturación, pedidos online... No necesitas apps externas ni sistemas complicados: todo está conectado automáticamente, ahorrándote trabajo y errores.",
       features: [
-        "Integración con ERPs populares",
-        "Sincronización con e-commerce",
-        "APIs personalizables",
-        "Automatización entre plataformas"
+        "TPV integrado",
+        "Gestión de horarios y turnos en la misma plataforma",
+        "Sincronización con plataformas de delivery",
+        "Facturación, costes y proveedores todo en uno",
+        "Pedidos online centralizados",
+        "Sincronización automática entre módulos (ventas → stock → informes)"
       ]
     }
   }
@@ -245,8 +281,11 @@ const features = [
 
       /* Grid cuando hay una tarjeta expandida */
       .features-grid.has-expanded {
-        grid-template-columns: 300px 1fr !important;
+        display: grid;
+        grid-template-columns: minmax(300px, 1fr) 4fr !important;
+        grid-template-rows: repeat(5, 1fr);
         gap: 1rem !important;
+        align-items: center;
       }
 
       .feature-card {
@@ -262,6 +301,7 @@ const features = [
 
       .feature-card.expanded {
         grid-column: 2;
+        grid-row: 1 / span 5;
         width: 100%;
         position: relative;
         min-height: 300px;
@@ -269,28 +309,54 @@ const features = [
         box-sizing: border-box;
       }
 
-      .features-grid.has-expanded {
-        grid-template-rows: 1fr;
-        padding-bottom: 1rem;
-        align-items: start;
-      }
-
       .features-grid.has-expanded .feature-card:not(.expanded) {
-        grid-column: 1; /* Se colocan en la primera columna */
-        padding: 0.25rem 0.5rem;
-        background: transparent;
+        grid-column: 1;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
         display: flex;
         align-items: center;
-        height: 50px;
-        min-height: 50px;
-        transform: translateY(0);
+        min-height: 70px;
         transition: all 0.3s ease;
         margin-bottom: 0.5rem;
         width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 1rem;
+        backdrop-filter: blur(8px);
+        cursor: pointer;
+      }
+
+      .dark .features-grid.has-expanded .feature-card:not(.expanded) {
+        background: rgba(17, 24, 39, 0.1);
+        border-color: rgba(255, 255, 255, 0.1);
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded):hover {
-        transform: translateX(5px);
+        transform: translateY(-0.5rem) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 0 15px -3px rgba(59, 130, 246, 0.2);
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .dark .features-grid.has-expanded .feature-card:not(.expanded):hover {
+        background: rgba(17, 24, 39, 0.2);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 0 15px -3px rgba(59, 130, 246, 0.3);
+      }
+
+      /* Efecto de brillo para las tarjetas no expandidas */
+      .features-grid.has-expanded .feature-card:not(.expanded)::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 1rem;
+        background-size: 200% 100%;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded):hover::before {
+        opacity: 1;
+        animation: shine 8s ease infinite;
       }
 
       /* Estilo para las features no expandidas */
@@ -302,22 +368,37 @@ const features = [
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal > div {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 0.5rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded):hover .feature-normal > div {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
       }
 
       /* Ajustar el texto en las tarjetas minimizadas */
       .features-grid.has-expanded .feature-card:not(.expanded) h3 {
-        font-size: 0.875rem;
-        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0 1rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        @apply !text-white;
+        transition: all 0.3s ease;
+      }
+
+      .features-grid.has-expanded .feature-card:not(.expanded):hover h3 {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
       }
 
       .features-grid.has-expanded .feature-card:not(.expanded) .feature-normal svg {
@@ -394,29 +475,32 @@ const features = [
           transform: translateY(0);
         }
       }
+
+      @keyframes shine {
+        from {
+          background-position: -200% 0;
+        }
+        to {
+          background-position: 200% 0;
+        }
+      }
+
+      .animate-shine {
+        animation: shine 8s ease infinite;
+      }
     </style>
     
     <!-- Features Grid -->
-    <div class="features-grid grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-2 relative">
+    <div class="features-grid grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-6 relative">
       {features.slice(0, 6).map((feature) => (
         <div
-          class="feature-card bg-gray-900/40 backdrop-blur-sm p-6 rounded-2xl hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] border border-white/10 transition-all group cursor-pointer relative z-10"
+          class={`feature-card bg-white/10 dark:bg-gray-800/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 p-6 rounded-2xl transition-all duration-300 group cursor-pointer relative z-10 hover:bg-white/20 dark:hover:bg-gray-800/20 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 before:bg-[length:200%_100%] hover:before:animate-shine overflow-hidden [&.expanded]:hover:bg-white/10 [&.expanded]:hover:translate-y-0 [&.expanded]:hover:scale-100 [&.expanded]:hover:shadow-none [&.expanded]:hover:before:opacity-0 [&.expanded]:before:animate-none`}
           data-feature-id={feature.id}
         >
           <!-- Contenido normal -->
           <div class="feature-normal">
-            <div class={`w-14 h-14 bg-gradient-to-r ${feature.iconGradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <!-- SVG path se mantiene igual -->
-                <rect x="4" y="3" width="14" height="18" rx="2" ry="2" stroke-width="2"/>
-                <path d="M8 7h6M8 11h6M8 15h4" stroke-width="2" stroke-linecap="round"/>
-                <path d="M19 12l-2-2M19 12l-2 2M19 12h-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="22" cy="12" r="2" fill="currentColor"/>
-                <path d="M20.5 10.5l1 1M23.5 10.5l-1 1M20.5 13.5l1-1M23.5 13.5l-1-1" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-4">{feature.title}</h3>
-            <p class="text-gray-300 leading-relaxed">
+            <h3 class="text-2xl font-bold !text-white mb-4">{feature.title}</h3>
+            <p class="!text-white leading-relaxed">
               {feature.description}
             </p>
           </div>
@@ -428,8 +512,8 @@ const features = [
                 <!-- Sección superior: título, descripción y video -->
                 <div class="grid grid-cols-2 gap-6">
                   <div class="space-y-6">
-                    <h4 class="text-4xl font-bold text-gray-800 dark:text-white">{feature.title}</h4>
-                    <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <h4 class="text-4xl font-bold !text-gray-800 dark:!text-white">{feature.title}</h4>
+                    <p class="text-xl !text-gray-600 dark:!text-gray-300 leading-relaxed">
                       {feature.expandedContent.description}
                     </p>
                   </div>
@@ -450,12 +534,12 @@ const features = [
                 <!-- Grid 2x2 de características -->
                 <div class="grid grid-cols-2 gap-4 mt-4">
                   {feature.expandedContent.features.map((item) => (
-                    <div class="rounded-lg p-4">
+                    <div class="rounded-lg p-4 bg-white/5 dark:bg-gray-800/10 backdrop-blur-sm">
                       <div class="flex items-start space-x-3">
-                        <svg class="w-6 h-6 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 !text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                        <span class="text-lg text-gray-600 dark:text-gray-300">{item}</span>
+                        <span class="text-lg !text-gray-600 dark:!text-gray-300">{item}</span>
                       </div>
                     </div>
                   ))}
