@@ -11,12 +11,12 @@ import ChatWidget from "../components/ChatWidget.astro";
   }
 
   function openChat() {
-    const chatWindow = document.getElementById('chat-window');
+    const chatWindow = document.getElementById("chat-window");
     if (chatWindow) {
-      chatWindow.style.transform = 'scale(1)';
-      chatWindow.style.opacity = '1';
-      
-      const chatInput = document.getElementById('chat-input');
+      chatWindow.style.transform = "scale(1)";
+      chatWindow.style.opacity = "1";
+
+      const chatInput = document.getElementById("chat-input");
       if (chatInput) {
         setTimeout(() => chatInput.focus(), 300);
       }
@@ -24,14 +24,14 @@ import ChatWidget from "../components/ChatWidget.astro";
   }
 
   // Agregar el evento de clic
-  document.getElementById('open-chat')?.addEventListener('click', (e) => {
+  document.getElementById("open-chat")?.addEventListener("click", (e) => {
     e.preventDefault();
     openChat();
   });
 </script>
 
 <section
-  class="pt-16 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+  class="pt-16 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 h-screen"
 >
   <div class="container mx-auto px-6">
     <div class="max-w-4xl mx-auto text-center">
