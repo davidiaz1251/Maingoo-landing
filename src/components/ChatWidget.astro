@@ -4,7 +4,6 @@
 
 <!-- Chat Widget -->
 <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
-
   <!-- Chat Window -->
   <div
     id="chat-window"
@@ -80,7 +79,7 @@
           class="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm max-w-xs border border-purple-100 dark:border-purple-900/30"
         >
           <p class="text-sm text-gray-800 dark:text-gray-200">
-            ¡Hola! 👋 Soy el asistente de Maingoo. ¿En qué puedo ayudarte hoy?
+            Hola, bienvenido/a a Maingoo 💙 ¿Con quién tengo el gusto?
           </p>
           <span class="text-xs text-gray-500 dark:text-gray-400 mt-1 block"
             >Ahora</span
@@ -130,12 +129,15 @@
   class ChatWidget {
     constructor() {
       this.isOpen = false;
-      this.n8nWebhookUrl = "https://n8n-production-11ca.up.railway.app/webhook/629958dd-5189-461b-8b62-9991c83bbbcb";
+      this.n8nWebhookUrl =
+        "https://n8n-production-11ca.up.railway.app/webhook/629958dd-5189-461b-8b62-9991c83bbbcb";
       this.sessionId = this.generateSessionId();
-      
+
       // Inicializar cuando el DOM esté listo
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => this.initializeElements());
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () =>
+          this.initializeElements()
+        );
       } else {
         this.initializeElements();
       }
@@ -211,13 +213,13 @@
 
     openChat() {
       if (!this.chatWindow) return;
-      
+
       this.isOpen = true;
-      
+
       // Mostrar la ventana del chat
       requestAnimationFrame(() => {
-        this.chatWindow.style.transform = 'scale(1)';
-        this.chatWindow.style.opacity = '1';
+        this.chatWindow.style.transform = "scale(1)";
+        this.chatWindow.style.opacity = "1";
       });
 
       // Focus input después de la animación
@@ -230,13 +232,13 @@
 
     closeChat() {
       if (!this.chatWindow) return;
-      
+
       this.isOpen = false;
-      
+
       // Ocultar la ventana del chat
       requestAnimationFrame(() => {
-        this.chatWindow.style.transform = 'scale(0)';
-        this.chatWindow.style.opacity = '0';
+        this.chatWindow.style.transform = "scale(0)";
+        this.chatWindow.style.opacity = "0";
       });
     }
 
