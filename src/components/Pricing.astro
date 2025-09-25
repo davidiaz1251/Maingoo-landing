@@ -145,7 +145,15 @@
     
     <!-- FAQ Section -->
     <div class="mt-20 max-w-3xl mx-auto">
-      <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-12">Preguntas Frecuentes</h3>
+      <h3 class="text-4xl font-bold text-center text-gray-800 dark:text-white mb-6">Preguntas Frecuentes</h3>
+      <div class="flex justify-center mb-12">
+        <button
+          id="open-chat-faq"
+          class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all transform hover:-translate-y-1 inline-block text-center"
+        >
+          Hablar con Maingoo IA
+        </button>
+      </div>
       <div class="space-y-6">
         <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
           <h4 class="font-semibold text-gray-800 dark:text-white mb-2">¿Tiene coste unirme a la beta?</h4>
@@ -162,4 +170,20 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById('open-chat-faq')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const chatWindow = document.getElementById('chat-window');
+      if (chatWindow) {
+        chatWindow.style.transform = 'scale(1)';
+        chatWindow.style.opacity = '1';
+        
+        const chatInput = document.getElementById('chat-input');
+        if (chatInput) {
+          setTimeout(() => chatInput.focus(), 300);
+        }
+      }
+    });
+  </script>
 </section>

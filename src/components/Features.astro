@@ -158,7 +158,31 @@ const features = [
         </span>
         tu negocio
       </h2>
+      <div class="flex justify-center mb-8">
+        <button
+          id="open-chat-features"
+          class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all transform hover:-translate-y-1 inline-block text-center"
+        >
+          Hablar con Maingoo IA
+        </button>
+      </div>
     </div>
+
+    <script>
+      document.getElementById('open-chat-features')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const chatWindow = document.getElementById('chat-window');
+        if (chatWindow) {
+          chatWindow.style.transform = 'scale(1)';
+          chatWindow.style.opacity = '1';
+          
+          const chatInput = document.getElementById('chat-input');
+          if (chatInput) {
+            setTimeout(() => chatInput.focus(), 300);
+          }
+        }
+      });
+    </script>
 
     <script>
       interface HTMLFeatureElement extends HTMLElement {

@@ -4,49 +4,6 @@
 
 <!-- Chat Widget -->
 <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
-  <!-- Chat Button -->
-  <button
-    id="chat-toggle"
-    class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group"
-    aria-label="Abrir chat"
-  >
-    <!-- Chat Icon -->
-    <svg
-      id="chat-icon"
-      class="w-6 h-6 transition-transform duration-300"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-      ></path>
-    </svg>
-    <!-- Close Icon -->
-    <svg
-      id="close-icon"
-      class="w-6 h-6 hidden transition-transform duration-300"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M6 18L18 6M6 6l12 12"></path>
-    </svg>
-
-    <!-- Notification Dot -->
-    <div
-      id="notification-dot"
-      class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"
-    >
-    </div>
-  </button>
 
   <!-- Chat Window -->
   <div
@@ -173,33 +130,43 @@
   class ChatWidget {
     constructor() {
       this.isOpen = false;
-      this.hasInitialAnimation = false;
-      this.n8nWebhookUrl =
-        "https://n8n-production-11ca.up.railway.app/webhook/629958dd-5189-461b-8b62-9991c83bbbcb"; // Aquí va la URL del webhook de n8n
-
-      // Generar un sessionId único para esta sesión del chat
+      this.n8nWebhookUrl = "https://n8n-production-11ca.up.railway.app/webhook/629958dd-5189-461b-8b62-9991c83bbbcb";
       this.sessionId = this.generateSessionId();
-
-      this.initializeElements();
-      this.bindEvents();
-      this.startInitialAnimation();
+      
+      // Inicializar cuando el DOM esté listo
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.initializeElements());
+      } else {
+        this.initializeElements();
+      }
     }
 
     initializeElements() {
-      this.chatToggle = document.getElementById("chat-toggle");
       this.chatWindow = document.getElementById("chat-window");
-      this.chatIcon = document.getElementById("chat-icon");
-      this.closeIcon = document.getElementById("close-icon");
-      this.notificationDot = document.getElementById("notification-dot");
       this.minimizeChat = document.getElementById("minimize-chat");
       this.chatInput = document.getElementById("chat-input");
       this.sendButton = document.getElementById("send-message");
       this.chatMessages = document.getElementById("chat-messages");
+
+      // Bindear eventos
+      if (this.minimizeChat) {
+        this.minimizeChat.addEventListener("click", () => this.closeChat());
+      }
+      if (this.sendButton) {
+        this.sendButton.addEventListener("click", () => this.sendMessage());
+      }
+      if (this.chatInput) {
+        this.chatInput.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            this.sendMessage();
+          }
+        });
+      }
     }
 
     bindEvents() {
-      // Toggle chat
-      this.chatToggle.addEventListener("click", () => this.toggleChat());
+      // Minimize chat
       this.minimizeChat.addEventListener("click", () => this.closeChat());
 
       // Send message events
@@ -242,45 +209,35 @@
       }, 3000);
     }
 
-    toggleChat() {
-      if (this.isOpen) {
-        this.closeChat();
-      } else {
-        this.openChat();
-      }
-    }
-
     openChat() {
+      if (!this.chatWindow) return;
+      
       this.isOpen = true;
-      this.hasInitialAnimation = true;
+      
+      // Mostrar la ventana del chat
+      requestAnimationFrame(() => {
+        this.chatWindow.style.transform = 'scale(1)';
+        this.chatWindow.style.opacity = '1';
+      });
 
-      // Hide notification dot
-      this.notificationDot.classList.add("hidden");
-
-      // Update icons
-      this.chatIcon.classList.add("hidden");
-      this.closeIcon.classList.remove("hidden");
-
-      // Show chat window
-      this.chatWindow.classList.remove("scale-0", "opacity-0");
-      this.chatWindow.classList.add("scale-100", "opacity-100");
-
-      // Focus input
+      // Focus input después de la animación
       setTimeout(() => {
-        this.chatInput.focus();
+        if (this.chatInput) {
+          this.chatInput.focus();
+        }
       }, 300);
     }
 
     closeChat() {
+      if (!this.chatWindow) return;
+      
       this.isOpen = false;
-
-      // Update icons
-      this.chatIcon.classList.remove("hidden");
-      this.closeIcon.classList.add("hidden");
-
-      // Hide chat window
-      this.chatWindow.classList.remove("scale-100", "opacity-100");
-      this.chatWindow.classList.add("scale-0", "opacity-0");
+      
+      // Ocultar la ventana del chat
+      requestAnimationFrame(() => {
+        this.chatWindow.style.transform = 'scale(0)';
+        this.chatWindow.style.opacity = '0';
+      });
     }
 
     async sendMessage() {
@@ -468,13 +425,9 @@
     }
   }
 
-  // Initialize chat widget when DOM is loaded
-  document.addEventListener("DOMContentLoaded", () => {
-    window.chatWidget = new ChatWidget();
-
-    // Configurar la URL del webhook de n8n aquí
-    // window.chatWidget.setN8nWebhookUrl('https://tu-n8n-instance.com/webhook/chat');
-  });
+  // Initialize chat widget immediately
+  window.ChatWidget = ChatWidget;
+  window.chatWidget = new ChatWidget();
 </script>
 
 <style>
