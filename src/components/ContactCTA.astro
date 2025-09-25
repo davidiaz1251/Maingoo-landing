@@ -30,6 +30,17 @@
           if (!field.value.trim()) {
             isValid = false;
           }
+          
+          // Validación específica para el teléfono
+          if (field.name === 'phone') {
+            const phoneRegex = /^[0-9]{9}$/;
+            if (!phoneRegex.test(field.value)) {
+              isValid = false;
+              field.setCustomValidity('Por favor, introduce exactamente 9 dígitos');
+            } else {
+              field.setCustomValidity('');
+            }
+          }
         });
 
         submitButton.disabled = !isValid;
@@ -145,7 +156,11 @@
                 type="tel" 
                 placeholder="Número de teléfono"
                 required
+                pattern="[0-9]{9}"
+                maxlength="9"
+                title="Por favor, introduce exactamente 9 dígitos"
                 class="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-white/10 border border-white/30 dark:border-white/20 text-white placeholder-white/70 dark:placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 dark:focus:ring-white/40"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9)"
               />
             </div>
             <div>
