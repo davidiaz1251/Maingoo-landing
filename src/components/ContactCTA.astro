@@ -2,11 +2,37 @@
 ---
 
 <script>
+  import municipiosData from '../data/municipios_spain.json';
+
+  interface Town {
+    label: string;
+    code?: string;
+    parent_code?: string;
+  }
+
+  interface Province {
+    label: string;
+    code: string;
+    parent_code: string;
+    towns: Town[];
+  }
+
+  interface Region {
+    label: string;
+    code: string;
+    parent_code: string;
+    provinces: Province[];
+  }
   import emailjs from '@emailjs/browser';
   import { parsePhoneNumber, AsYouType, getCountries, getCountryCallingCode, getExampleNumber } from 'libphonenumber-js/max';
   import type { CountryCode } from 'libphonenumber-js';
   import examples from 'libphonenumber-js/examples.mobile.json' assert { type: 'json' };
   
+  // Función para normalizar texto (eliminar tildes y convertir a minúsculas)
+  const normalizeText = (text: string): string => {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  };
+
   const initForm = () => {
     try {
       emailjs.init("aPPNoh3Ouq2xOXzLa");
@@ -30,7 +56,79 @@
       return;
     }
 
-    // El campo de ubicación ahora es un simple campo de texto sin funcionalidad de búsqueda
+    // Configurar búsqueda de municipios
+
+    // Crear elemento para resultados de búsqueda
+    const locationResults = document.createElement('div');
+    locationResults.className = 'absolute w-full mt-1 max-h-60 overflow-y-auto rounded-lg bg-black/80 backdrop-blur-sm z-10';
+    locationInput.parentNode?.appendChild(locationResults);
+
+    // Función para buscar municipios
+    const searchLocation = (searchTerm: string) => {
+      locationResults.innerHTML = '';
+      if (!searchTerm) {
+        locationResults.classList.add('hidden');
+        return;
+      }
+
+      const normalizedSearch = normalizeText(searchTerm);
+      const results: { label: string; type: 'municipio' | 'provincia'; original: string }[] = [];
+
+      // Buscar en todos los municipios
+      municipiosData.forEach((comunidad: Region) => {
+        comunidad.provinces.forEach((province: Province) => {
+          province.towns.forEach((town: Town) => {
+            const normalizedTown = normalizeText(town.label);
+            if (normalizedTown.includes(normalizedSearch)) {
+              results.push({
+                label: `${town.label} (${province.label})`,
+                type: 'municipio',
+                original: town.label
+              });
+            }
+          });
+        });
+      });
+
+      // Ordenar resultados: primero municipios que empiezan con el término, luego los que lo contienen
+      results.sort((a, b) => {
+        const aStartsWith = normalizeText(a.original).startsWith(normalizedSearch);
+        const bStartsWith = normalizeText(b.original).startsWith(normalizedSearch);
+        if (aStartsWith && !bStartsWith) return -1;
+        if (!aStartsWith && bStartsWith) return 1;
+        return a.label.localeCompare(b.label);
+      });
+
+      // Mostrar resultados
+      if (results.length > 0) {
+        results.slice(0, 10).forEach(result => {
+          const div = document.createElement('div');
+          div.className = 'px-4 py-2 cursor-pointer hover:bg-white/10 text-white';
+          div.textContent = result.label;
+          div.addEventListener('click', () => {
+            locationInput.value = result.label;
+            locationResults.classList.add('hidden');
+          });
+          locationResults.appendChild(div);
+        });
+        locationResults.classList.remove('hidden');
+      } else {
+        locationResults.classList.add('hidden');
+      }
+    };
+
+    // Eventos para el campo de ubicación
+    locationInput.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      searchLocation(target.value);
+    });
+
+    // Cerrar resultados al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!locationInput.contains(e.target as Node)) {
+        locationResults.classList.add('hidden');
+      }
+    });
 
     // Manejar la visibilidad del campo "otro tipo de negocio"
     const handleBusinessTypeChange = () => {
@@ -354,7 +452,7 @@
                 id="location-input"
                 name="location"
                 type="text" 
-                placeholder="Dirección del negocio"
+                placeholder="Ubicación del negocio"
                 required
                 maxlength="100"
                 class="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-white/10 border border-white/30 dark:border-white/20 text-white placeholder-white/70 dark:placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 dark:focus:ring-white/40 transition-colors duration-200"
